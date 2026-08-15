@@ -1,0 +1,1594 @@
+:root {
+  --primary: #ffffff;
+}
+
+/* ------------------
+        ALL
+--------------------*/
+header {
+  height: 55px;
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 1);
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 9999999;
+  transition: background-color 0.3s, height 0.3s;
+  /* Menambahkan transisi pada height */
+}
+
+.scrolled {
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+header .container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+header .container .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px;
+  width: fit-content;
+  height: 80%;
+  margin-left: 12%;
+}
+
+header .container .logo img {
+  width: 45px;
+  border-radius: 50%;
+}
+
+header .container .desk {
+  display: flex;
+  width: 35%;
+  margin-right: auto;
+  height: 55px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+header .container .desk li {
+  width: fit-content;
+  display: flex;
+  height: 100%;
+  width: fit-content;
+  padding: 0px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "DIN Pro";
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+header .container .desc a {
+  font-family: "DIN Pro";
+  font-size: 14px;
+}
+
+header .container .desk li i {
+  margin-left: 8px;
+}
+
+header .container .desk li a {
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 12px;
+}
+
+/* =====================================
+   MEGA MENU — COMPLETE REWRITE
+   Match reference image precisely
+   ===================================== */
+
+/* Wrapper: full-width, drops down from header */
+header .container .ms {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  background-color: #9c0e10;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  /* Cool Animation */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  box-shadow: 0 20px 40px rgba(0,0,0,0);
+}
+
+header .container .ms.d {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* ---- TOP PANEL: Section + Articles + Buku ---- */
+.ms-top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 36px 8% 36px 8%;
+  gap: 0;
+  min-height: 260px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* LEFT: SECTION nav (3 columns of links) */
+.ms-section {
+  flex: 0 0 auto;
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  padding-right: 3%;
+}
+
+.ms-heading {
+  font-family: "72 Black", "DIN Pro", sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0 0 24px 0;
+  padding-bottom: 0;
+}
+
+.ms-links {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.ms-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ms-links ul li a {
+  font-family: "72 Black", "DIN Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+  display: block;
+}
+
+.ms-links ul li a:hover {
+  opacity: 0.6;
+  color: #ffffff !important;
+}
+
+/* MIDDLE: Article thumbnails */
+.ms-articles {
+  flex: 0 0 auto;
+  width: 27%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 0 2% 0 3%;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ms-article-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 14px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.ms-article-img {
+  width: 74px;
+  height: 74px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.ms-article-title {
+  font-family: "72 Condensed", "DIN Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #ffffff;
+  margin: 0;
+  transition: opacity 0.2s ease;
+}
+
+.ms-article-item:hover .ms-article-title {
+  opacity: 0.65;
+}
+
+/* RIGHT: BUKU KAMI */
+.ms-buku {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 0 0 3%;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ms-buku-link {
+  display: block;
+  text-decoration: none;
+}
+
+.ms-buku-img {
+  width: 130px;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(4px 8px 20px rgba(0, 0, 0, 0.7));
+}
+
+/* keep old cover class for fallback */
+.ms-buku-cover {
+  width: 115px;
+  height: 168px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.55);
+}
+
+/* ---- BOTTOM: OUR SPONSOR row ---- */
+.ms-sponsor {
+  background-color: #F2A91E;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 18px 8%;
+}
+
+.ms-sponsor-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.ms-sponsor-heading {
+  font-family: "72 Black", "DIN Pro", sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.75);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.ms-sponsor-logos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 28px;
+  flex: 1;
+}
+
+.ms-sponsor-logos img {
+  height: 36px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ms-sponsor-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ms-sponsor-logo-link:hover {
+  opacity: 0.75;
+  transform: translateY(-2px);
+}
+
+.ms-sponsor-logo-link:hover img {
+  opacity: 0.75;
+}
+
+.ms-sponsor-logos img:hover {
+  opacity: 1;
+}
+
+.ms-sponsor-kemitraan {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-left: auto;
+  text-align: right;
+}
+
+.ms-sponsor-kemitraan span,
+.ms-kemitraan-link {
+  font-family: "72 Black", "DIN Pro", sans-serif;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.65);
+  letter-spacing: 1px;
+  display: block;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ms-kemitraan-link:hover {
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: underline;
+}
+
+/* Ensure hover effects in mega menu don't inherit global red */
+.ms-links ul li a:hover,
+.ms-article-item:hover,
+.ms-buku-link:hover {
+  color: #ffffff !important;
+}
+
+header .container .desk .mega ul li {
+  background-color: aliceblue;
+  width: 100%;
+  padding: 0;
+}
+
+header .container .desk li.mega,
+header .container .desk .mega li {
+  font-family: "72 Black";
+}
+
+header .container .desk a {
+  font-family: "72 Black";
+}
+
+header .container .desk .mega ul li a {
+  color: black;
+}
+
+header .container .desk .mega:hover ul {
+  display: block;
+}
+
+header .container .toggle {
+  display: none;
+}
+
+header .container .reNav {
+  flex-direction: column;
+  display: none;
+}
+
+header .container .akun {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8%;
+  font-family: "72 Condensed";
+  letter-spacing: 1px;
+}
+
+header .container .akun a:first-child {
+  text-decoration: none;
+  color: var(--primary);
+  padding: 10px 25px;
+  font-size: 12px;
+}
+
+header .container .akun a:nth-child(2) {
+  color: var(--primary);
+  background-color: #e03a3c;
+  border-radius: 8px;
+  padding: 10px 25px;
+  text-decoration: none;
+}
+
+.nscroll {
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/*-------------------
+  TABLET - LAPTOP L 
+---------------------*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  header {
+    height: 55px;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 9999999;
+    transition: 0.3s;
+  }
+
+  header .container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
+
+  header .container .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    width: fit-content;
+    height: 80%;
+    margin-left: 15px;
+  }
+
+  header .container .logo img {
+    width: 45px;
+    border-radius: 50%;
+  }
+
+  header .container .desk {
+    display: none;
+    width: 35%;
+    height: 55px;
+    list-style: none;
+    justify-content: space-between;
+  }
+
+  header .container .desk li {
+    width: fit-content;
+    display: flex;
+    height: 100%;
+    width: fit-content;
+    padding: 0px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: "Poppins";
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  header .container .desk li i {
+    margin-left: 8px;
+  }
+
+  header .container .desk li a {
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 12px;
+  }
+
+  header .container .desk .mega .ms {
+    position: absolute;
+    transform: translateY(-100%);
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    height: 70vh;
+    padding: 0px 0px 5vh 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+  header .container .desk .mega div.d {
+    transform: translateY(100%);
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+  header .container .desk .mega .ms .container {
+    border-top: 1px solid rgba(200, 200, 200, 0.4);
+    width: 80%;
+    height: 90%;
+    padding: 20px 0px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section {
+    width: 69%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section h3 {
+    margin-bottom: 40px;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection {
+    display: flex;
+    width: 100%;
+    height: 70%;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection ul {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection ul li {
+    width: 100%;
+    height: 14%;
+    background-color: transparent;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection ul li a {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    background-color: transparent;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small .content {
+    height: 30%;
+    width: 100%;
+    display: flex;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small .content .img {
+    width: 80px;
+    height: 80px;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small .content h3 {
+    font-size: 14px;
+    margin-left: 10px;
+    width: 70%;
+    font-family: "72 Black";
+  }
+
+  header .container .desk .mega .ms .container .printEdition {
+    width: 29%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .printEdition h3 {
+    margin-bottom: 40px;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large .desc {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large .desc h3 {
+    margin: 15px 0px;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large .img {
+    width: 140px;
+    height: 240px;
+  }
+
+  header .container .desk .mega ul li {
+    background-color: aliceblue;
+    width: 100%;
+    padding: 0;
+  }
+
+  header .container .desk .mega ul li a {
+    color: black;
+  }
+
+  header .container .desk .mega:hover ul {
+    display: block;
+  }
+
+  header .container .toggle {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    margin-left: 30px;
+  }
+
+  header .container .reNav {
+    flex-direction: column;
+    position: fixed;
+    height: calc(100vh - 50px);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    transition: 0.3s;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    transform: translateX(-100%);
+  }
+
+  header .container .reNav .container {
+    width: 80%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-family: "Poppins";
+    justify-content: start;
+  }
+
+  header .container .reNav .container ul {
+    margin-bottom: 20px;
+    display: flex;
+    width: 100%;
+    height: 30vh;
+    justify-content: start;
+    align-items: start;
+    list-style: none;
+  }
+
+  header .container .reNav .container ul h3 {
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 25px;
+  }
+
+  header .container .reNav .container ul li {
+    /* margin: 10px 20px 10px 0px; */
+    padding: 5px 0px;
+    width: fit-content;
+  }
+
+  header .container .reNav .container ul li a {
+    font-size: 15px;
+    color: #c1c1c1;
+    text-decoration: none;
+  }
+
+  header .container .reNav .container ul li a i {
+    margin-right: 10px;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  header .container .toggle span {
+    display: block;
+    background-color: #ffffff;
+    width: 90%;
+    height: 4px;
+    border-radius: 3px;
+    transition: 0.3s;
+  }
+
+  header .container div.navRight {
+    transform: translateX(0);
+  }
+
+  header .container .toggle input {
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    z-index: 20;
+  }
+
+  header .container .toggle span:nth-child(2) {
+    transform-origin: 0 0;
+  }
+
+  header .container .toggle span:nth-child(4) {
+    transform-origin: 0 100%;
+  }
+
+  header .container .toggle input:checked~span:nth-child(2) {
+    transform: rotate(45deg) translate(4px, -6px);
+  }
+
+  header .container .toggle input:checked~span:nth-child(3) {
+    transform: scale(0);
+  }
+
+  header .container .toggle input:checked~span:nth-child(4) {
+    transform: rotate();
+    transform: rotate(-45deg) translate(4.5px, 5.5px);
+  }
+
+  header .container .akun {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  header .container .akun a:first-child {
+    text-decoration: none;
+    color: var(--primary);
+    padding: 10px 25px;
+  }
+
+  header .container .akun a:nth-child(2) {
+    color: var(--primary);
+    background-color: #e03a3c;
+    border-radius: 4px;
+    padding: 10px 25px;
+    text-decoration: none;
+  }
+
+  .nscroll {
+    height: 55px;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  header {
+    height: 55px;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 9999999;
+    transition: 0.3s;
+  }
+
+  header .container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
+
+  header .container .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    width: fit-content;
+    height: 80%;
+    margin-left: 15px;
+  }
+
+  header .container .logo img {
+    width: 35px;
+    border-radius: 50%;
+  }
+
+  header .container .desk {
+    display: none;
+    width: 35%;
+    height: 55px;
+    list-style: none;
+    justify-content: space-between;
+  }
+
+  header .container .desk li {
+    width: fit-content;
+    display: flex;
+    height: 100%;
+    width: fit-content;
+    padding: 0px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: "Poppins";
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  header .container .desk li i {
+    margin-left: 8px;
+  }
+
+  header .container .desk li a {
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 12px;
+  }
+
+  header .container .desk .mega .ms {
+    position: absolute;
+    transform: translateY(-100%);
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    height: 70vh;
+    padding: 0px 0px 5vh 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+  header .container .desk .mega div.d {
+    transform: translateY(100%);
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+  header .container .desk .mega .ms .container {
+    border-top: 1px solid rgba(200, 200, 200, 0.4);
+    width: 80%;
+    height: 90%;
+    padding: 20px 0px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section {
+    width: 69%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section h3 {
+    margin-bottom: 40px;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection {
+    display: flex;
+    width: 100%;
+    height: 70%;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection ul {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection ul li {
+    width: 100%;
+    height: 14%;
+    background-color: transparent;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection ul li a {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    background-color: transparent;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small .content {
+    height: 30%;
+    width: 100%;
+    display: flex;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small .content .img {
+    width: 80px;
+    height: 80px;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small .content h3 {
+    font-size: 14px;
+    margin-left: 10px;
+    width: 70%;
+  }
+
+  header .container .desk .mega .ms .container .printEdition {
+    width: 29%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .printEdition h3 {
+    margin-bottom: 40px;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large .desc {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large .desc h3 {
+    margin: 15px 0px;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large .img {
+    width: 140px;
+    height: 240px;
+  }
+
+  header .container .desk .mega ul li {
+    background-color: aliceblue;
+    width: 100%;
+    padding: 0;
+  }
+
+  header .container .desk .mega ul li a {
+    color: black;
+  }
+
+  header .container .desk .mega:hover ul {
+    display: block;
+  }
+
+  header .container .toggle {
+    display: flex;
+    height: 30px;
+    width: 30px;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    margin-left: 30px;
+  }
+
+  header .container .reNav {
+    flex-direction: column;
+    position: fixed;
+    height: calc(100% - 55px);
+    width: 40%;
+    left: 0;
+    bottom: 0;
+    transition: 0.3s;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    transform: translateX(-100%);
+  }
+
+  header .container .reNav .container {
+    width: 80%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-family: "Poppins";
+    justify-content: start;
+  }
+
+  header .container .reNav .container ul {
+    margin-bottom: 20px;
+    display: flex;
+    width: 100%;
+    height: 30vh;
+    justify-content: start;
+    align-items: start;
+    list-style: none;
+  }
+
+  header .container .reNav .container ul h3 {
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 25px;
+  }
+
+  header .container .reNav .container ul li {
+    /* margin: 10px 20px 10px 0px; */
+    padding: 5px 0px;
+    width: fit-content;
+  }
+
+  header .container .reNav .container ul li a {
+    font-size: 15px;
+    color: #c1c1c1;
+    text-decoration: none;
+  }
+
+  header .container .reNav .container ul li a i {
+    margin-right: 10px;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  header .container .toggle span {
+    display: block;
+    background-color: #ffffff;
+    width: 90%;
+    height: 4px;
+    border-radius: 3px;
+    transition: 0.3s;
+  }
+
+  header .container div.navRight {
+    transform: translateX(0);
+  }
+
+  header .container .toggle input {
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    z-index: 20;
+  }
+
+  header .container .toggle span:nth-child(2) {
+    transform-origin: 0 0;
+  }
+
+  header .container .toggle span:nth-child(4) {
+    transform-origin: 0 100%;
+  }
+
+  header .container .toggle input:checked~span:nth-child(2) {
+    transform: rotate(45deg) translate(4px, -6px);
+  }
+
+  header .container .toggle input:checked~span:nth-child(3) {
+    transform: scale(0);
+  }
+
+  header .container .toggle input:checked~span:nth-child(4) {
+    transform: rotate();
+    transform: rotate(-45deg) translate(4.5px, 5.5px);
+  }
+
+  header .container .akun {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  header .container .akun a:first-child {
+    text-decoration: none;
+    color: var(--primary);
+    padding: 10px 18px;
+    font-size: 10px;
+  }
+
+  header .container .akun a:nth-child(2) {
+    color: var(--primary);
+    background-color: #e03a3c;
+    border-radius: 4px;
+    padding: 10px 18px;
+    text-decoration: none;
+    font-size: 10px;
+  }
+
+  .nscroll {
+    height: 55px;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    height: 50px;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 9999999;
+    transition: 0.3s;
+  }
+
+  header .container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
+
+  header .container .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    width: fit-content;
+    height: 80%;
+    margin-left: 15px;
+  }
+
+  header .container .logo img {
+    width: 25px;
+    border-radius: 50%;
+  }
+
+  header .container .desk {
+    display: none;
+    width: 35%;
+    height: 55px;
+    list-style: none;
+    justify-content: space-between;
+  }
+
+  header .container .desk li {
+    width: fit-content;
+    display: flex;
+    height: 100%;
+    width: fit-content;
+    padding: 0px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: "Poppins";
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  header .container .desk li i {
+    margin-left: 8px;
+  }
+
+  header .container .desk li a {
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 12px;
+  }
+
+  header .container .desk .mega .ms {
+    position: absolute;
+    transform: translateY(-100%);
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    height: 70vh;
+    padding: 0px 0px 5vh 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+  header .container .desk .mega div.d {
+    transform: translateY(100%);
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+  header .container .desk .mega .ms .container {
+    border-top: 1px solid rgba(200, 200, 200, 0.4);
+    width: 80%;
+    height: 90%;
+    padding: 20px 0px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section {
+    width: 69%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section h3 {
+    margin-bottom: 40px;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection {
+    display: flex;
+    width: 100%;
+    height: 70%;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection ul {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection ul li {
+    width: 100%;
+    height: 14%;
+    background-color: transparent;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection ul li a {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    background-color: transparent;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small .content {
+    height: 30%;
+    width: 100%;
+    display: flex;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small .content .img {
+    width: 80px;
+    height: 80px;
+  }
+
+  header .container .desk .mega .ms .container .section .listSection .small .content h3 {
+    font-size: 14px;
+    margin-left: 10px;
+    width: 70%;
+  }
+
+  header .container .desk .mega .ms .container .printEdition {
+    width: 29%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .printEdition h3 {
+    margin-bottom: 40px;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large .desc {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large .desc h3 {
+    margin: 15px 0px;
+  }
+
+  header .container .desk .mega .ms .container .printEdition .large .img {
+    width: 140px;
+    height: 240px;
+  }
+
+  header .container .desk .mega ul li {
+    background-color: aliceblue;
+    width: 100%;
+    padding: 0;
+  }
+
+  header .container .desk .mega ul li a {
+    color: black;
+  }
+
+  header .container .desk .mega:hover ul {
+    display: block;
+  }
+
+  header .container .toggle {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  header .container .reNav {
+    flex-direction: column;
+    position: fixed;
+    height: calc(100% - 50px);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    transition: 0.3s;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-100%);
+  }
+
+  header .container .reNav .container {
+    width: 80%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-family: "Poppins";
+    justify-content: start;
+  }
+
+  header .container .reNav .container ul {
+    margin-bottom: 20px;
+    display: flex;
+    width: 100%;
+    height: 30vh;
+    justify-content: start;
+    align-items: start;
+    list-style: none;
+  }
+
+  header .container .reNav .container ul h3 {
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-size: 12px;
+  }
+
+  header .container .reNav .container ul li {
+    /* margin: 10px 20px 10px 0px; */
+    padding: 5px 0px;
+    width: fit-content;
+  }
+
+  header .container .reNav .container ul li a {
+    font-size: 15px;
+    color: #c1c1c1;
+    text-decoration: none;
+  }
+
+  header .container .reNav .container ul li a i {
+    margin-right: 10px;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  header .container .toggle span {
+    display: block;
+    background-color: #ffffff;
+    width: 90%;
+    height: 2px;
+    border-radius: 3px;
+    transition: 0.3s;
+  }
+
+  header .container div.navRight {
+    transform: translateX(0);
+  }
+
+  header .container .toggle input {
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    z-index: 20;
+  }
+
+  header .container .toggle span:nth-child(2) {
+    transform-origin: 0 0;
+  }
+
+  header .container .toggle span:nth-child(4) {
+    transform-origin: 0 100%;
+  }
+
+  header .container .toggle input:checked~span:nth-child(2) {
+    transform: rotate(45deg) translate(4px, -6px);
+  }
+
+  header .container .toggle input:checked~span:nth-child(3) {
+    transform: scale(0);
+  }
+
+  header .container .toggle input:checked~span:nth-child(4) {
+    transform: rotate();
+    transform: rotate(-45deg) translate(4.5px, 5.5px);
+  }
+
+  header .container .akun {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    margin: 0px 10px 0px 0px;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  header .container .akun a:first-child {
+    text-decoration: none;
+    color: var(--primary);
+    padding: 10px 18px;
+    font-size: 7px;
+  }
+
+  header .container .akun a:nth-child(2) {
+    color: var(--primary);
+    background-color: #e03a3c;
+    border-radius: 4px;
+    padding: 10px 18px;
+    text-decoration: none;
+    font-size: 7px;
+  }
+
+  .nscroll {
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* Fix hover color inside mega menu since background is already red */
+header .container .ms a:hover,
+header .container .ms a:hover h1,
+header .container .ms a:hover h2,
+header .container .ms a:hover h3,
+header .container .ms a:hover h4,
+header .container .ms a:hover h5,
+header .container .ms a:hover h6,
+header .container .ms a:hover .desc,
+header .container .desk .mega .ms a:hover,
+header .container .desk .mega .ms a:hover h3 {
+  color: rgba(255, 255, 255, 0.65) !important;
+  transition: all 0.2s ease;
+}
