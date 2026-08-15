@@ -10,6 +10,11 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WebhookController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/run-migration', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+    return "Migrasi berhasil dijalankan: " . \Illuminate\Support\Facades\Artisan::output();
+});
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/search/live', [SearchController::class, 'live'])->name('search.live');
 
