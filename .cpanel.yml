@@ -1,0 +1,10 @@
+---
+deployment:
+  tasks:
+    - export COMPOSER_HOME=/tmp
+    - /usr/local/bin/composer install --no-dev --optimize-autoloader
+    - /usr/local/bin/php artisan migrate --force
+    - /usr/local/bin/php artisan config:cache
+    - /usr/local/bin/php artisan route:cache
+    - /usr/local/bin/php artisan view:cache
+    - /bin/cp -R * /home/uifykblr/public_html/
