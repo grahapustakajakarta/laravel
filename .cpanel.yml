@@ -7,4 +7,4 @@ deployment:
     - /usr/local/bin/php artisan config:cache
     - /usr/local/bin/php artisan route:cache
     - /usr/local/bin/php artisan view:cache
-    - /bin/cp -R * /home/uifykblr/public_html/
+    - rsync -a --exclude='index.php' public/ /home/uifykblr/public_html/
