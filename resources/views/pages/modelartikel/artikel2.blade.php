@@ -646,7 +646,10 @@
                     @if($topPhoto)
                         <img src="{{ $topPath }}" alt="Foto Penulis" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
                     @endif
-                    <div class="author" style="margin: 0; padding: 0; border: none; text-transform: uppercase; font-family: var(--font-sans), 'Arial', sans-serif; font-size: 11px; letter-spacing: 1px; color: #b70d0f;">By <span style="font-weight: 900; color: #b70d0f;">{{ htmlspecialchars($artikel->penulis->nama ?? '-', ENT_QUOTES, 'UTF-8') }}</span></div>
+                    @php
+                        $topName = $artikel->penulis_id ? ($artikel->penulis->nama ?? '-') : ($artikel->penulis_manual ?? '-');
+                    @endphp
+                    <div class="author" style="margin: 0; padding: 0; border: none; text-transform: uppercase; font-family: var(--font-sans), 'Arial', sans-serif; font-size: 11px; letter-spacing: 1px; color: #b70d0f;">By <span style="font-weight: 900; color: #b70d0f;">{{ htmlspecialchars($topName, ENT_QUOTES, 'UTF-8') }}</span></div>
                 </div>
                 @php
                     $gambar_collection = $artikel->gambar;
@@ -739,18 +742,21 @@
                             $bioPath = asset('storage/profile/' . $bioPhoto);
                         }
                     }
+
+                    $bioName = $artikel->penulis_id ? ($artikel->penulis->nama ?? 'Redaksi') : ($artikel->penulis_manual ?? 'Redaksi');
+                    $bioDesc = $artikel->sponsor ?? ($artikel->penulis_id ? $artikel->penulis->biografi : '');
                 @endphp
 
-                @if(isset($artikel->penulis) && ($bioPhoto || $artikel->penulis->biografi))
+                @if(!empty($bioDesc))
                 <div class="author-bio-section">
                     <hr class="author-bio-divider">
                     <div class="author-bio-content">
-                        @if($bioPhoto)
-                        <img src="{{ $bioPath }}" alt="{{ $artikel->penulis->nama }}" class="author-bio-img">
+                        @if(!empty($bioPhoto))
+                        <img src="{{ $bioPath }}" alt="{{ $bioName }}" class="author-bio-img">
                         @endif
                         <div class="author-bio-text">
-                            <h4 class="author-bio-name">{{ strtoupper($artikel->penulis->nama) }}</h4>
-                            <div class="author-bio-desc">{{ $artikel->penulis->biografi }}</div>
+                            <h4 class="author-bio-name">{{ strtoupper($bioName) }}</h4>
+                            <div class="author-bio-desc">{{ $bioDesc }}</div>
                         </div>
                     </div>
                     <hr class="author-bio-divider">

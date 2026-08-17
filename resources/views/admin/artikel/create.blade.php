@@ -178,8 +178,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label fw-bold">Sponsor (Opsional)</label>
-                                <input type="text" name="sponsor" class="form-control" value="{{ old('sponsor') }}">
+                                <label class="form-label fw-bold">Bio Pendek Penulis (Opsional)</label>
+                                <textarea name="sponsor" class="form-control" rows="3" placeholder="Isi jika ingin menampilkan bio singkat untuk penulis manual...">{{ old('sponsor') }}</textarea>
                             </div>
 
                             <div class="mb-4">
@@ -293,8 +293,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label fw-bold">Sponsor (Opsional)</label>
-                                <input type="text" name="sponsor" class="form-control" value="{{ old('sponsor') }}">
+                                <label class="form-label fw-bold">Bio Pendek Penulis (Opsional)</label>
+                                <textarea name="sponsor" class="form-control" rows="3" placeholder="Isi jika ingin menampilkan bio singkat untuk penulis manual...">{{ old('sponsor') }}</textarea>
                             </div>
 
                             <div class="mb-4">

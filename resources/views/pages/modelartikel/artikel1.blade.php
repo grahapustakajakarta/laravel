@@ -574,7 +574,10 @@
                 @if($topPhoto)
                     <img src="{{ $topPath }}" alt="Foto Penulis" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
                 @endif
-                <h3 class="penulis" style="margin: 0; padding: 0; border: none;">By <span>{{ $artikel->penulis->nama ?? '-' }}</span></h3>
+                @php
+                    $topName = $artikel->penulis_id ? ($artikel->penulis->nama ?? '-') : ($artikel->penulis_manual ?? '-');
+                @endphp
+                <h3 class="penulis" style="margin: 0; padding: 0; border: none;">By <span>{{ $topName }}</span></h3>
             </div>
             <div style="font-family: var(--font-serif); width: 100%;">
                     @php
@@ -657,16 +660,21 @@
                     @endif
                 </div>
 
-            @if(isset($artikel->penulis) && ($topPhoto || $artikel->penulis->biografi))
+            @php
+                $bioName = $artikel->penulis_id ? ($artikel->penulis->nama ?? 'Redaksi') : ($artikel->penulis_manual ?? 'Redaksi');
+                $bioDesc = $artikel->sponsor ?? ($artikel->penulis_id ? $artikel->penulis->biografi : '');
+            @endphp
+
+            @if(!empty($bioDesc))
             <div class="author-bio-section">
                 <hr class="author-bio-divider">
                 <div class="author-bio-content">
-                    @if($topPhoto)
-                    <img src="{{ $topPath }}" alt="{{ $artikel->penulis->nama }}" class="author-bio-img">
+                    @if(!empty($topPhoto))
+                    <img src="{{ $topPath }}" alt="{{ $bioName }}" class="author-bio-img">
                     @endif
                     <div class="author-bio-text">
-                        <h4 class="author-bio-name">{{ strtoupper($artikel->penulis->nama) }}</h4>
-                        <div class="author-bio-desc">{{ $artikel->penulis->biografi }}</div>
+                        <h4 class="author-bio-name">{{ strtoupper($bioName) }}</h4>
+                        <div class="author-bio-desc">{{ $bioDesc }}</div>
                     </div>
                 </div>
                 <hr class="author-bio-divider">

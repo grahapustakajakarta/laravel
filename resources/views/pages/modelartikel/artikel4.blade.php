@@ -550,7 +550,10 @@
                         @if(!empty($topPhoto))
                             <img src="{{ $topPath }}" alt="Foto Penulis" class="penulis-foto">
                         @endif
-                        <span class="penulis-nama">BY {{ strtoupper($artikel->penulis->nama ?? 'Redaksi') }}</span>
+                        @php
+                            $topName = $artikel->penulis_id ? ($artikel->penulis->nama ?? 'Redaksi') : ($artikel->penulis_manual ?? 'Redaksi');
+                        @endphp
+                        <span class="penulis-nama">BY {{ strtoupper($topName) }}</span>
                     </div>
 
                     <div class="action-buttons-container">
@@ -664,7 +667,7 @@
                 </div>
 
 
-                {{-- Bio Penulis --}}
+                {{-- Bio Penulis / Sponsor --}}
                 @php
                     $bioPhoto = null;
                     $bioPath = '';
@@ -679,18 +682,21 @@
                             $bioPath = asset('storage/profile/' . $bioPhoto);
                         }
                     }
+
+                    $bioName = $artikel->penulis_id ? ($artikel->penulis->nama ?? 'Redaksi') : ($artikel->penulis_manual ?? 'Redaksi');
+                    $bioDesc = $artikel->sponsor ?? ($artikel->penulis_id ? $artikel->penulis->biografi : '');
                 @endphp
-                @if($artikel->penulis && (!empty($bioPhoto) || !empty($artikel->penulis->biografi)))
+                @if(!empty($bioDesc))
                 <div style="display:flex; align-items:flex-start; gap:16px; margin-top:40px; padding-top:20px; border-top: 1px solid #e0e0e0;">
                     @if(!empty($bioPhoto))
-                        <img src="{{ $bioPath }}" alt="{{ $artikel->penulis->nama }}" style="width:55px; height:55px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                        <img src="{{ $bioPath }}" alt="{{ $bioName }}" style="width:55px; height:55px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     @endif
                     <div>
                         <div style="font-family:var(--font-sans),'Arial',sans-serif; font-size:11px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#222; margin-bottom:6px;">
-                            {{ strtoupper($artikel->penulis->nama) }}
+                            {{ strtoupper($bioName) }}
                         </div>
                         <p style="font-family:var(--font-sans),'Arial',sans-serif; font-size:13px; color:#555; line-height:1.6; margin:0;">
-                            {{ $artikel->penulis->biografi }}
+                            {{ $bioDesc }}
                         </p>
                     </div>
                 </div>
