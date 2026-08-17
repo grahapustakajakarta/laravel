@@ -106,24 +106,65 @@ class PublikasiController extends Controller
         return redirect()->back()->with('error', 'File PDF tidak ditemukan.');
     }
 
+    public function previewPdf(Publikasi $publikasi)
+    {
+        if (!$publikasi->file_pdf_preview) {
+            return abort(404);
+        }
+
+        $filePath = public_path('pdf/' . $publikasi->file_pdf_preview);
+        $cpanelPath = base_path('../public_html/pdf/' . $publikasi->file_pdf_preview);
+
+        if (!file_exists($filePath) && file_exists($cpanelPath)) {
+            $filePath = $cpanelPath;
+        }
+
+        if (file_exists($filePath)) {
+            return response()->file($filePath);
+        }
+        
+        return abort(404);
+    }
+
     public function preview($slug)
     {
         $magz = Magz::where('slug', $slug)->firstOrFail();
-        
+        $userId = Auth::guard('pengguna')->id();
+
+        // Cek akses via PenggunaKoleksi
         $hasAccess = false;
-        if (Auth::guard('pengguna')->check()) {
-            $userId = Auth::guard('pengguna')->id();
-            if ($magz->harga <= 0) {
-                $hasAccess = true;
-            } else {
-                $hasAccess = \App\Models\PenggunaKoleksi::where('pengguna_id', $userId)
-                                     ->where('item_type', 'magz')
-                                     ->where('item_id', $magz->id)
-                                     ->exists();
-            }
+        if ($magz->harga <= 0) {
+            $hasAccess = true;
+        } elseif ($userId) {
+            $hasAccess = PenggunaKoleksi::where('pengguna_id', $userId)
+                ->where('item_type', 'magz')
+                ->where('item_id', $magz->id)
+                ->exists();
         }
 
         return view('pages.magz.preview', compact('magz', 'hasAccess'));
+    }
+
+    public function previewPdfMagz($slug)
+    {
+        $magz = Magz::where('slug', $slug)->firstOrFail();
+        
+        if (!$magz->file_pdf_preview) {
+            return abort(404);
+        }
+
+        $filePath = public_path('pdf/' . $magz->file_pdf_preview);
+        $cpanelPath = base_path('../public_html/pdf/' . $magz->file_pdf_preview);
+
+        if (!file_exists($filePath) && file_exists($cpanelPath)) {
+            $filePath = $cpanelPath;
+        }
+
+        if (file_exists($filePath)) {
+            return response()->file($filePath);
+        }
+        
+        return abort(404);
     }
 
     public function beli(Request $request, $slug)

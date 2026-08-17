@@ -227,4 +227,26 @@ class PustakaController extends Controller
 
         return response()->file($path);
     }
+
+    public function previewPdfPustaka($slug)
+    {
+        $pustaka = Pustaka::where('slug', $slug)->firstOrFail();
+        
+        if (!$pustaka->file_pdf_preview) {
+            return abort(404);
+        }
+
+        $filePath = public_path('pdf/pustaka/' . $pustaka->file_pdf_preview);
+        $cpanelPath = base_path('../public_html/pdf/pustaka/' . $pustaka->file_pdf_preview);
+
+        if (!file_exists($filePath) && file_exists($cpanelPath)) {
+            $filePath = $cpanelPath;
+        }
+
+        if (file_exists($filePath)) {
+            return response()->file($filePath);
+        }
+        
+        return abort(404);
+    }
 }

@@ -59,6 +59,7 @@ Route::get('/katalog-pustaka/{slug}', [PustakaController::class, 'show'])->name(
 Route::get('/katalog-pustaka/{slug}/beli', [PustakaController::class, 'beli'])->name('pustaka.beli');
 Route::post('/katalog-pustaka/{slug}/bayar', [PustakaController::class, 'prosesBayar'])->name('pustaka.bayar');
 Route::get('/katalog-pustaka/{slug}/baca', [PustakaController::class, 'bacaPustaka'])->name('pustaka.baca');
+Route::get('/katalog-pustaka/{slug}/preview-pdf', [PustakaController::class, 'previewPdfPustaka'])->name('pustaka.preview_pdf');
 Route::post('/katalog-pustaka/notif', [PustakaController::class, 'notification'])->name('pustaka.notification');
 
 // Keranjang Belanja
@@ -142,6 +143,7 @@ Route::get('/artikel/{slug}', [ArticleController::class, 'show'])->name('artikel
 // Publikasi (Frontend)
 Route::get('/publikasi', [PublikasiController::class, 'index'])->name('publikasi.index');
 Route::get('/publikasi/{publikasi}/download', [PublikasiController::class, 'download'])->name('publikasi.download');
+Route::get('/publikasi/{publikasi}/preview-pdf', [PublikasiController::class, 'previewPdf'])->name('publikasi.preview_pdf');
 Route::get('/publikasi/{publikasi}', [PublikasiController::class, 'show'])->name('publikasi.show');
 
 // MAGZ (Frontend)
@@ -150,6 +152,7 @@ Route::get('/magz/{slug}/preview', [PublikasiController::class, 'preview'])->nam
 Route::get('/magz/{slug}/beli', [PublikasiController::class, 'beli'])->name('magz.beli');
 Route::post('/magz/{slug}/bayar', [PublikasiController::class, 'prosesBayar'])->name('magz.bayar');
 Route::get('/magz/{slug}/baca', [PublikasiController::class, 'bacaMagz'])->name('magz.baca');
+Route::get('/magz/{slug}/preview-pdf', [PublikasiController::class, 'previewPdfMagz'])->name('magz.preview_pdf');
 Route::post('/magz/notif', [PublikasiController::class, 'notification'])->name('magz.notification');
 
 // Admin Panel

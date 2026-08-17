@@ -273,7 +273,7 @@
                         <i class="fas fa-download" style="font-size: 0.8rem;"></i> Download
                     </a>
                     @if($item->file_pdf_preview)
-                    <a href="{{ asset('pdf/' . $item->file_pdf_preview) }}"
+                    <a href="{{ route('publikasi.preview_pdf', $item->id) }}"
                        class="pub-download" target="_blank" style="margin-right: 15px;">
                         <i class="fas fa-eye" style="font-size: 0.8rem;"></i> Preview PDF
                     </a>
