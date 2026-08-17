@@ -22,3 +22,9 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+/public/pdf/*
+!/public/pdf/.gitkeep
+/public/img/*
+!/public/img/.gitkeep
+/public/pustaka/*
+!/public/pustaka/.gitkeep
