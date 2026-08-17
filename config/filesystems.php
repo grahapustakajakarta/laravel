@@ -49,7 +49,7 @@ return [
 
         'public_img' => [
             'driver' => 'local',
-            'root' => public_path('img'),
+            'root' => is_dir(base_path('../public_html/img')) ? base_path('../public_html/img') : public_path('img'),
             'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/img',
             'visibility' => 'public',
             'throw' => false,
@@ -57,8 +57,8 @@ return [
 
         'public_pdf' => [
             'driver' => 'local',
-            'root' => public_path('pdf'),
-            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/pdf',
+            'root' => is_dir(base_path('../public_html/file_pdf')) ? base_path('../public_html/file_pdf') : public_path('pdf'),
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/file_pdf',
             'visibility' => 'public',
             'throw' => false,
         ],

@@ -228,6 +228,8 @@ class ArtikelController extends Controller
         $artikel->konten = $request->konten ?? '';
         $artikel->kategori_id = $request->kategori_id;
         $artikel->penulis_id = $request->penulis_id;
+        $artikel->penulis_manual = $request->penulis_manual;
+        $artikel->sponsor = $request->sponsor;
 
         $penulis_id = $request->input('penulis_id');
         if ($penulis_id) {

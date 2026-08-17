@@ -90,7 +90,14 @@ class Artikel extends Model
         if (array_key_exists('gambar_pertama', $this->attributes)) {
             return $this->attributes['gambar_pertama'];
         }
-        $gambar = $this->gambar()->first();
+        
+        // Gunakan relasi yang sudah diload jika ada untuk menghemat query
+        if ($this->relationLoaded('gambar')) {
+            $gambar = $this->gambar->first();
+        } else {
+            $gambar = $this->gambar()->first();
+        }
+        
         return $gambar ? $gambar->file_gambar : 'default.jpg';
     }
 
