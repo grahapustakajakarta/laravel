@@ -258,3 +258,22 @@ Route::get('/temp-update-images', function () {
     }
     return "Category not found";
 });
+
+// Fallback routes for split-directory architecture (e.g. cPanel public_html vs public)
+// If Apache cannot find the file in public_html, it passes the 404 to Laravel.
+// Laravel will then serve the file directly from its internal public/storage paths.
+Route::get('/img/{filename}', function ($filename) {
+    $path = public_path('img/' . $filename);
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    return response()->file($path);
+})->where('filename', '.*');
+
+Route::get('/storage/{path}', function ($path) {
+    $filePath = storage_path('app/public/' . $path);
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+    return response()->file($filePath);
+})->where('path', '.*');
