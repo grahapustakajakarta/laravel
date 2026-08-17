@@ -27,6 +27,7 @@
                     <th>Penulis</th>
                     <th>Jenis</th>
                     <th>Tgl Publikasi</th>
+                    <th>Views</th>
                     <th width="20%">Aksi</th>
                 </tr>
             </thead>
@@ -40,6 +41,7 @@
                     <td>{{ $item->penulis->nama ?? '-' }}</td>
                     <td><span class="badge {{ $item->jenis_artikel == 'premium' ? 'bg-warning text-dark' : 'bg-success' }}">{{ ucfirst($item->jenis_artikel) }}</span></td>
                     <td>{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->format('d/m/Y') }}</td>
+                    <td><span class="badge bg-info text-dark"><i class="fas fa-eye"></i> {{ number_format($item->jumlah_tayang) }}</span></td>
                     <td>
                         <a href="{{ route('admin.artikel.edit', $item->id) }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-edit"></i> Edit</a>
                         <form action="{{ route('admin.artikel.destroy', $item->id) }}" method="POST" class="d-inline">
