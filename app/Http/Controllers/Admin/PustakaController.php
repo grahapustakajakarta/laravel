@@ -9,6 +9,8 @@ use App\Traits\LogsActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Services\ActivityLogger;
+use App\Services\PdfPreviewService;
 
 class PustakaController extends Controller
 {
@@ -66,8 +68,18 @@ class PustakaController extends Controller
 
         if ($request->hasFile('file_pdf')) {
             $pdfName = time() . '_pustaka_' . Str::random(8) . '.' . $request->file('file_pdf')->getClientOriginalExtension();
+            $pdfPath = public_path('pdf/pustaka/' . $pdfName);
             $request->file('file_pdf')->move(public_path('pdf/pustaka'), $pdfName);
             $data['file_pdf'] = $pdfName;
+            
+            // Generate Preview PDF
+            $previewName = 'preview_' . $pdfName;
+            $previewPath = public_path('pdf/pustaka/' . $previewName);
+            if (PdfPreviewService::generatePreview($pdfPath, $previewPath, 10)) {
+                $data['file_pdf_preview'] = $previewName;
+            } else {
+                $data['file_pdf_preview'] = null;
+            }
         }
 
         $p = Pustaka::create($data);
@@ -121,9 +133,23 @@ class PustakaController extends Controller
             if ($pustaka->file_pdf && file_exists(public_path('pdf/pustaka/' . $pustaka->file_pdf))) {
                 unlink(public_path('pdf/pustaka/' . $pustaka->file_pdf));
             }
+            if ($pustaka->file_pdf_preview && file_exists(public_path('pdf/pustaka/' . $pustaka->file_pdf_preview))) {
+                unlink(public_path('pdf/pustaka/' . $pustaka->file_pdf_preview));
+            }
+            
             $pdfName = time() . '_pustaka_' . Str::random(8) . '.' . $request->file('file_pdf')->getClientOriginalExtension();
+            $pdfPath = public_path('pdf/pustaka/' . $pdfName);
             $request->file('file_pdf')->move(public_path('pdf/pustaka'), $pdfName);
             $data['file_pdf'] = $pdfName;
+            
+            // Generate Preview PDF
+            $previewName = 'preview_' . $pdfName;
+            $previewPath = public_path('pdf/pustaka/' . $previewName);
+            if (PdfPreviewService::generatePreview($pdfPath, $previewPath, 10)) {
+                $data['file_pdf_preview'] = $previewName;
+            } else {
+                $data['file_pdf_preview'] = null;
+            }
         }
 
         $pustaka->update($data);
@@ -144,6 +170,9 @@ class PustakaController extends Controller
 
         if ($pustaka->file_pdf && file_exists(public_path('pdf/pustaka/' . $pustaka->file_pdf))) {
             unlink(public_path('pdf/pustaka/' . $pustaka->file_pdf));
+        }
+        if ($pustaka->file_pdf_preview && file_exists(public_path('pdf/pustaka/' . $pustaka->file_pdf_preview))) {
+            unlink(public_path('pdf/pustaka/' . $pustaka->file_pdf_preview));
         }
 
         $judul = $pustaka->judul;

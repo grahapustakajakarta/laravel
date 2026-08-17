@@ -19,6 +19,7 @@ class Magz extends Model
         'deskripsi',
         'cover_gambar',
         'file_pdf',
+        'file_pdf_preview',
         'harga',
         'isi_preview',
         'table_of_contents',

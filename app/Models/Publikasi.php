@@ -18,6 +18,7 @@ class Publikasi extends Model
         'deskripsi',
         'cover_gambar',
         'file_pdf',
+        'file_pdf_preview',
     ];
 
     protected static function boot()

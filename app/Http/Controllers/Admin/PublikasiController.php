@@ -8,6 +8,8 @@ use App\Traits\LogsActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Services\ActivityLogger;
+use App\Services\PdfPreviewService;
 
 class PublikasiController extends Controller
 {
@@ -45,7 +47,17 @@ class PublikasiController extends Controller
 
         // Upload PDF
         $pdfFilename = time() . '_' . Str::random(8) . '.pdf';
-        Storage::disk('public_pdf')->put($pdfFilename, file_get_contents($request->file('file_pdf')));
+        $pdfPath = public_path('pdf/' . $pdfFilename);
+        $request->file('file_pdf')->move(public_path('pdf'), $pdfFilename);
+        
+        // Generate Preview PDF
+        $previewFilename = 'preview_' . $pdfFilename;
+        $previewPath = public_path('pdf/' . $previewFilename);
+        if (PdfPreviewService::generatePreview($pdfPath, $previewPath, 10)) {
+            $data['file_pdf_preview'] = $previewFilename;
+        } else {
+            $data['file_pdf_preview'] = null;
+        }
 
         // Upload Cover (optional)
         $coverFilename = null;
@@ -55,15 +67,17 @@ class PublikasiController extends Controller
         }
 
         $status = $request->input('action') === 'draft' ? 'draft' : 'publish';
+        $slug = Publikasi::generateSlug($request->judul);
 
         $p = Publikasi::create([
-            'judul'        => $request->judul,
-            'slug'         => Publikasi::generateSlug($request->judul),
-            'kategori'     => $request->kategori,
-            'deskripsi'    => $request->deskripsi,
-            'status'       => $status,
-            'cover_gambar' => $coverFilename,
-            'file_pdf'     => $pdfFilename,
+            'judul'            => $request->judul,
+            'slug'             => $slug,
+            'kategori'         => $request->kategori,
+            'deskripsi'        => $request->deskripsi,
+            'status'           => $status,
+            'cover_gambar'     => $coverFilename,
+            'file_pdf'         => $pdfFilename,
+            'file_pdf_preview' => $data['file_pdf_preview'] ?? null,
         ]);
 
         $this->logActivity("Menambahkan publikasi \"{$p->judul}\"", 'Publikasi');
@@ -101,9 +115,23 @@ class PublikasiController extends Controller
             if (Storage::disk('public_pdf')->exists($publikasi->file_pdf)) {
                 Storage::disk('public_pdf')->delete($publikasi->file_pdf);
             }
+            if ($publikasi->file_pdf_preview && Storage::disk('public_pdf')->exists($publikasi->file_pdf_preview)) {
+                Storage::disk('public_pdf')->delete($publikasi->file_pdf_preview);
+            }
+            
             $pdfFilename = time() . '_' . Str::random(8) . '.pdf';
-            Storage::disk('public_pdf')->put($pdfFilename, file_get_contents($request->file('file_pdf')));
+            $pdfPath = public_path('pdf/' . $pdfFilename);
+            $request->file('file_pdf')->move(public_path('pdf'), $pdfFilename);
             $data['file_pdf'] = $pdfFilename;
+            
+            // Generate Preview PDF
+            $previewFilename = 'preview_' . $pdfFilename;
+            $previewPath = public_path('pdf/' . $previewFilename);
+            if (PdfPreviewService::generatePreview($pdfPath, $previewPath, 10)) {
+                $data['file_pdf_preview'] = $previewFilename;
+            } else {
+                $data['file_pdf_preview'] = null;
+            }
         }
 
         // Ganti Cover jika ada upload baru
@@ -128,6 +156,10 @@ class PublikasiController extends Controller
         if (Storage::disk('public_pdf')->exists($publikasi->file_pdf)) {
             Storage::disk('public_pdf')->delete($publikasi->file_pdf);
         }
+        if ($publikasi->file_pdf_preview && Storage::disk('public_pdf')->exists($publikasi->file_pdf_preview)) {
+            Storage::disk('public_pdf')->delete($publikasi->file_pdf_preview);
+        }
+        
         if ($publikasi->cover_gambar && Storage::disk('public_img')->exists($publikasi->cover_gambar)) {
             Storage::disk('public_img')->delete($publikasi->cover_gambar);
         }

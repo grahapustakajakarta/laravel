@@ -8,6 +8,8 @@ use App\Traits\LogsActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Services\ActivityLogger;
+use App\Services\PdfPreviewService;
 
 class MagzController extends Controller
 {
@@ -48,11 +50,21 @@ class MagzController extends Controller
             'file_pdf'          => 'required|file|mimes:pdf|max:20480',
         ]);
 
-        // Upload PDF
+        // 2. Upload PDF File
         $pdfFilename = time() . '_' . Str::random(8) . '.pdf';
-        Storage::disk('public_pdf')->put($pdfFilename, file_get_contents($request->file('file_pdf')));
+        $pdfPath = public_path('pdf/' . $pdfFilename);
+        $request->file('file_pdf')->move(public_path('pdf'), $pdfFilename);
+        
+        // Generate Preview PDF
+        $previewFilename = 'preview_' . $pdfFilename;
+        $previewPath = public_path('pdf/' . $previewFilename);
+        if (PdfPreviewService::generatePreview($pdfPath, $previewPath, 10)) {
+            $data['file_pdf_preview'] = $previewFilename;
+        } else {
+            $data['file_pdf_preview'] = null;
+        }
 
-        // Upload Cover (optional)
+        // 3. Simpan ke database (optional)
         $coverFilename = null;
         if ($request->hasFile('cover_gambar')) {
             $coverFilename = time() . '_cover_' . Str::random(8) . '.' . $request->file('cover_gambar')->getClientOriginalExtension();
@@ -71,9 +83,11 @@ class MagzController extends Controller
             'deskripsi'         => $request->deskripsi,
             'isi_preview'       => $request->isi_preview,
             'table_of_contents' => $request->table_of_contents,
-            'harga'             => $request->harga ?: 0,
             'cover_gambar'      => $coverFilename,
             'file_pdf'          => $pdfFilename,
+            'file_pdf_preview'  => $data['file_pdf_preview'] ?? null,
+            'jenis_akses'       => $request->jenis_akses,
+            'harga'             => $request->harga ?? 0,
         ]);
 
         $this->logActivity("Menambahkan MAGZ \"{$m->judul}\"", 'Magz');
@@ -116,14 +130,28 @@ class MagzController extends Controller
             'harga'             => $request->harga ?: 0,
         ];
 
-        // Ganti PDF jika ada upload baru
+        // Ganti PDF
         if ($request->hasFile('file_pdf')) {
             if (Storage::disk('public_pdf')->exists($magz->file_pdf)) {
                 Storage::disk('public_pdf')->delete($magz->file_pdf);
             }
+            if ($magz->file_pdf_preview && Storage::disk('public_pdf')->exists($magz->file_pdf_preview)) {
+                Storage::disk('public_pdf')->delete($magz->file_pdf_preview);
+            }
+            
             $pdfFilename = time() . '_' . Str::random(8) . '.pdf';
-            Storage::disk('public_pdf')->put($pdfFilename, file_get_contents($request->file('file_pdf')));
+            $pdfPath = public_path('pdf/' . $pdfFilename);
+            $request->file('file_pdf')->move(public_path('pdf'), $pdfFilename);
             $data['file_pdf'] = $pdfFilename;
+            
+            // Generate Preview PDF
+            $previewFilename = 'preview_' . $pdfFilename;
+            $previewPath = public_path('pdf/' . $previewFilename);
+            if (PdfPreviewService::generatePreview($pdfPath, $previewPath, 10)) {
+                $data['file_pdf_preview'] = $previewFilename;
+            } else {
+                $data['file_pdf_preview'] = null;
+            }
         }
 
         // Ganti Cover jika ada upload baru
@@ -144,10 +172,15 @@ class MagzController extends Controller
 
     public function destroy(Magz $magz)
     {
-        // Hapus file fisik
+        // Hapus PDF utama dan preview
         if (Storage::disk('public_pdf')->exists($magz->file_pdf)) {
             Storage::disk('public_pdf')->delete($magz->file_pdf);
         }
+        if ($magz->file_pdf_preview && Storage::disk('public_pdf')->exists($magz->file_pdf_preview)) {
+            Storage::disk('public_pdf')->delete($magz->file_pdf_preview);
+        }
+        
+        // Hapus gambar
         if ($magz->cover_gambar && Storage::disk('public_img')->exists($magz->cover_gambar)) {
             Storage::disk('public_img')->delete($magz->cover_gambar);
         }

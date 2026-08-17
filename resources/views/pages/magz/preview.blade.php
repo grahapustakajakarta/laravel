@@ -214,10 +214,18 @@
           </div>
 
           @if(isset($hasAccess) && $hasAccess)
-              <a href="{{ route('magz.baca', ['slug' => $magz->slug]) }}" class="btn-subscribe" style="background-color: #111; color: #fff; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 6px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#333'" onmouseout="this.style.backgroundColor='#111'">UNDUH <i class="fas fa-arrow-down" style="font-size: 0.9rem;"></i></a>
+              <div style="display: flex; gap: 12px; align-items: center; margin-top: 35px;">
+                  <a href="{{ route('magz.baca', ['slug' => $magz->slug]) }}" class="btn-subscribe" style="margin-top: 0; background-color: #111; color: #fff; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 6px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#333'" onmouseout="this.style.backgroundColor='#111'">UNDUH <i class="fas fa-arrow-down" style="font-size: 0.9rem;"></i></a>
+                  @if($magz->file_pdf_preview)
+                  <a href="{{ asset('pdf/' . $magz->file_pdf_preview) }}" target="_blank" class="btn-subscribe" style="margin-top: 0; background-color: transparent; color: #111 !important; border: 1.5px solid #111;">PREVIEW PDF</a>
+                  @endif
+              </div>
           @else
               <div style="display: flex; gap: 12px; align-items: center; margin-top: 35px;">
                   <a href="{{ route('magz.beli', ['slug' => $magz->slug]) }}" class="btn-subscribe" style="margin-top: 0;">Beli</a>
+                  @if($magz->file_pdf_preview)
+                  <a href="{{ asset('pdf/' . $magz->file_pdf_preview) }}" target="_blank" class="btn-subscribe" style="margin-top: 0; background-color: transparent; color: #111 !important; border: 1.5px solid #111;">PREVIEW PDF</a>
+                  @endif
                   @php
                       $inCart = false;
                       if(Auth::guard('pengguna')->check()) {

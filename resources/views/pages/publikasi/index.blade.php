@@ -272,6 +272,12 @@
                        class="pub-download" style="margin-right: 15px;">
                         <i class="fas fa-download" style="font-size: 0.8rem;"></i> Download
                     </a>
+                    @if($item->file_pdf_preview)
+                    <a href="{{ asset('pdf/' . $item->file_pdf_preview) }}"
+                       class="pub-download" target="_blank" style="margin-right: 15px;">
+                        <i class="fas fa-eye" style="font-size: 0.8rem;"></i> Preview PDF
+                    </a>
+                    @endif
                     <button type="button" class="pub-save-btn" onclick="saveKoleksi('publikasi', {{ $item->id }}, this)" style="background:none; border:none; color:#111; cursor:pointer; font-family:var(--font-sans); font-size:0.9rem; text-transform:uppercase; letter-spacing:0.5px; transition:color 0.15s; padding:0;">
                         @php
                             $isSaved = false;

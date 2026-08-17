@@ -17,7 +17,7 @@ class Pustaka extends Model
         'link_vidio_produk', 'link_read_sample',
         'link_tokopedia', 'link_shopee', 'link_instagram', 'link_tiktok', 
         'link_coffeesophia', 'link_togamas', 'link_ebook', 'link_lainnya', 'nomor_wa',
-        'gambar_1', 'gambar_2', 'gambar_3', 'file_pdf'
+        'gambar_1', 'gambar_2', 'gambar_3', 'file_pdf', 'file_pdf_preview'
     ];
 
     public function penulis()
