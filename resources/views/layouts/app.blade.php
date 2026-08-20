@@ -321,6 +321,7 @@
                                 <li><a href="{{ route('home') }}">Home</a></li>
                                 <li><a href="{{ url('/page/puisi') }}">Puisi</a></li>
                                 <li><a href="{{ url('/page/prosa') }}">Prosa</a></li>
+                                <li><a href="{{ route('donate') }}" style="color: red; font-weight: bold;">Donasi</a></li>
                                 <li><a href="{{ url('/page/fiksi') }}">Fiksi</a></li>
                                 <li><a href="{{ url('/page/buku') }}">Buku</a></li>
                             </ul>
@@ -793,6 +794,7 @@
                             <li><a href="{{ url('/page/jktplus') }}">Jakarta+</a></li>
                             <li><a href="{{ url('/page/puisi') }}">Puisi</a></li>
                             <li><a href="{{ url('/page/prosa') }}">Prosa</a></li>
+                            <li><a href="{{ route('donate') }}" style="color: red; font-weight: bold;">Donasi</a></li>
                             <li><a href="{{ route('publikasi.index') }}">Publikasi</a></li>
                             <li><a href="{{ route('pustaka.index') }}">Pustaka</a></li>
                         </div>

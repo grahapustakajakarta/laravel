@@ -34,6 +34,7 @@
                     <li><a style="font-family: var(--font-sans);" href="{{ url('/page/jktplus') }}">Jakarta+</a></li>
                     <li><a style="font-family: var(--font-sans);" href="{{ url('/page/puisi') }}">Puisi</a></li>
                     <li><a style="font-family: var(--font-sans);" href="{{ url('/page/prosa') }}">Prosa</a></li>
+                    <li><a style="font-family: var(--font-sans); color: red; font-weight: bold;" href="{{ route('donate') }}">Donasi</a></li>
                 </ul>
             </div>
             {{-- ===== INTERNAL CSS TERISOLASI (prefix bj-) ===== --}}
