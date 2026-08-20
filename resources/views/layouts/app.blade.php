@@ -344,20 +344,20 @@
 
                     {{-- MIDDLE: Support Us & Articles --}}
                     <style>
-                        .desk .mega .ms-section { width: 33% !important; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 20px; }
-                        .desk .mega .ms-buku { width: 18% !important; padding-left: 20px; }
-                        .desk .mega .ms-middle { flex: 0 0 auto; width: 49%; display: flex; gap: 0; }
-                        .desk .mega .ms-middle-left { width: 50%; padding: 0 25px; border-right: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; justify-content: center; }
-                        .desk .mega .ms-middle-right { width: 50%; padding: 0 25px; border-right: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; justify-content: center; gap: 15px; }
+                        .desk .mega .ms-section { width: 35% !important; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 25px; margin-right: 25px; }
+                        .desk .mega .ms-buku { width: 15% !important; padding-left: 25px; border-left: 1px solid rgba(255,255,255,0.15); margin-left: 25px; }
+                        .desk .mega .ms-middle { flex: 1; display: flex; margin-top: 55px; }
+                        .desk .mega .ms-middle-left { width: 45%; padding-right: 25px; border-right: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; justify-content: flex-start; }
+                        .desk .mega .ms-middle-right { width: 55%; padding-left: 25px; display: flex; flex-direction: column; justify-content: flex-start; gap: 20px; }
                         .support-btn:hover { background-color: #fff !important; }
                     </style>
                     <div class="ms-middle">
                         {{-- Support Us Text (Yellow, no box) --}}
                         <div class="ms-middle-left">
-                            <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; line-height: 1.1; margin-bottom: 15px; margin-top: 0; color: #f4e04d;">Support<br>the Guardian</h3>
-                            <p style="font-family: 'Source Sans 3', sans-serif; font-size: 14px; line-height: 1.4; margin: 0; margin-bottom: 20px; color: #fff;">Available for everyone, funded by readers</p>
-                            <a href="{{ route('donate') }}" class="support-btn" style="background-color: #f4e04d; color: #111; font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; padding: 6px 20px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; width: fit-content; gap: 6px; transition: background 0.2s;">
-                                Support us <i class="fas fa-arrow-right" style="font-size: 12px; font-weight: 400;"></i>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.1; margin-bottom: 15px; margin-top: 0; color: #f4e04d; letter-spacing: -0.5px;">Support<br>the Guardian</h3>
+                            <p style="font-family: 'Source Sans 3', sans-serif; font-size: 15px; line-height: 1.4; margin: 0; margin-bottom: 20px; color: #fff;">Available for everyone, funded by readers</p>
+                            <a href="{{ route('donate') }}" class="support-btn" style="background-color: #f4e04d; color: #111; font-family: 'Source Sans 3', sans-serif; font-size: 15px; font-weight: 700; text-decoration: none; padding: 6px 20px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; width: fit-content; gap: 6px; transition: background 0.2s;">
+                                Support us <i class="fas fa-arrow-right" style="font-size: 12px; font-weight: 700;"></i>
                             </a>
                         </div>
 
@@ -365,9 +365,9 @@
                         <div class="ms-middle-right">
                             @if(isset($coffeeshophia_menu))
                                 @foreach($coffeeshophia_menu as $r)
-                                <a href="{{ url('/artikel/'.$r->slug) }}" class="ms-article-item" style="display: flex; gap: 12px; text-decoration: none; align-items: center;">
-                                    <div class="ms-article-img" style="width: 80px; height: 80px; background: url('{{ asset('img/'.$r->gambar_pertama) }}') center/cover no-repeat; flex-shrink: 0;"></div>
-                                    <p class="ms-article-title" style="color: #fff; font-family: 'Source Sans 3', sans-serif; font-size: 13px; font-weight: 700; margin: 0; line-height: 1.4;">{{ $r->judul }}</p>
+                                <a href="{{ url('/artikel/'.$r->slug) }}" class="ms-article-item" style="display: flex; gap: 15px; text-decoration: none; align-items: flex-start;">
+                                    <div class="ms-article-img" style="width: 85px; height: 85px; background: url('{{ asset('img/'.$r->gambar_pertama) }}') center/cover no-repeat; flex-shrink: 0;"></div>
+                                    <p class="ms-article-title" style="color: #fff; font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 700; margin: 0; line-height: 1.4; margin-top: -2px;">{{ $r->judul }}</p>
                                 </a>
                                 @endforeach
                             @endif
