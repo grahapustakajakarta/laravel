@@ -344,11 +344,11 @@
 
                     {{-- MIDDLE: Support Us & Articles --}}
                     <style>
-                        .desk .mega .ms-section { width: 38% !important; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 20px; box-sizing: border-box; }
-                        .desk .mega .ms-buku { width: 17% !important; padding-left: 20px; border-left: 1px solid rgba(255,255,255,0.15); box-sizing: border-box; }
-                        .desk .mega .ms-middle { flex: 1; display: flex; margin-top: 40px; box-sizing: border-box; padding: 0 20px; }
-                        .desk .mega .ms-middle-left { width: 45%; padding-right: 20px; border-right: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; justify-content: flex-start; box-sizing: border-box; }
-                        .desk .mega .ms-middle-right { width: 55%; padding-left: 20px; display: flex; flex-direction: column; justify-content: flex-start; gap: 15px; box-sizing: border-box; }
+                        #megaMenu .ms-section { width: 38% !important; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 20px; box-sizing: border-box; margin: 0; flex: 0 0 auto; }
+                        #megaMenu .ms-buku { width: 17% !important; padding-left: 20px; border-left: 1px solid rgba(255,255,255,0.15); box-sizing: border-box; margin: 0; flex: 0 0 auto; }
+                        #megaMenu .ms-middle { flex: 0 0 auto; width: 45%; display: flex !important; margin-top: 40px; box-sizing: border-box; padding: 0 20px; flex-direction: row !important; }
+                        #megaMenu .ms-middle-left { width: 45%; padding-right: 20px; border-right: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; justify-content: flex-start; box-sizing: border-box; }
+                        #megaMenu .ms-middle-right { width: 55%; padding-left: 20px; display: flex; flex-direction: column; justify-content: flex-start; gap: 15px; box-sizing: border-box; }
                         .support-btn:hover { background-color: #fff !important; }
                     </style>
                     <div class="ms-middle">
