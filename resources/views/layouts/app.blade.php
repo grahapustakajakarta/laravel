@@ -344,30 +344,30 @@
 
                     {{-- MIDDLE: Support Us & Articles --}}
                     <style>
-                        .desk .mega .ms-section { width: 32% !important; }
-                        .desk .mega .ms-buku { width: 23% !important; }
-                        .desk .mega .ms-middle { flex: 0 0 auto; width: 45%; display: flex; gap: 20px; }
-                        .support-box:hover { opacity: 0.9; }
+                        .desk .mega .ms-section { width: 33% !important; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 20px; }
+                        .desk .mega .ms-buku { width: 18% !important; padding-left: 20px; }
+                        .desk .mega .ms-middle { flex: 0 0 auto; width: 49%; display: flex; gap: 0; }
+                        .desk .mega .ms-middle-left { width: 50%; padding: 0 25px; border-right: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; justify-content: center; }
+                        .desk .mega .ms-middle-right { width: 50%; padding: 0 25px; border-right: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; justify-content: center; gap: 15px; }
+                        .support-btn:hover { background-color: #fff !important; }
                     </style>
                     <div class="ms-middle">
-                        {{-- Support Us Box --}}
-                        <a href="{{ route('donate') }}" class="support-box" style="flex: 1; background-color: #ffe500; padding: 20px; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; color: #111; min-height: 200px;">
-                            <div>
-                                <h3 style="font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1.1; margin-bottom: 15px; margin-top: 0; color: #111;">Support<br>Galeri Buku Jakarta</h3>
-                                <p style="font-family: 'Source Sans 3', sans-serif; font-size: 14px; line-height: 1.4; margin: 0; color: #111;">Available for everyone, funded by readers.</p>
-                            </div>
-                            <div style="margin-top: 20px; font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 5px;">
-                                <span style="background: #111; color: #ffe500; padding: 6px 16px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px;">Support us <i class="fas fa-arrow-right" style="font-size: 12px;"></i></span>
-                            </div>
-                        </a>
+                        {{-- Support Us Text (Yellow, no box) --}}
+                        <div class="ms-middle-left">
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; line-height: 1.1; margin-bottom: 15px; margin-top: 0; color: #f4e04d;">Support<br>the Guardian</h3>
+                            <p style="font-family: 'Source Sans 3', sans-serif; font-size: 14px; line-height: 1.4; margin: 0; margin-bottom: 20px; color: #fff;">Available for everyone, funded by readers</p>
+                            <a href="{{ route('donate') }}" class="support-btn" style="background-color: #f4e04d; color: #111; font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; padding: 6px 20px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; width: fit-content; gap: 6px; transition: background 0.2s;">
+                                Support us <i class="fas fa-arrow-right" style="font-size: 12px; font-weight: 400;"></i>
+                            </a>
+                        </div>
 
                         {{-- Articles (Coffeeshophia) --}}
-                        <div class="ms-articles-inner" style="flex: 1; display: flex; flex-direction: column; gap: 15px;">
+                        <div class="ms-middle-right">
                             @if(isset($coffeeshophia_menu))
                                 @foreach($coffeeshophia_menu as $r)
-                                <a href="{{ url('/artikel/'.$r->slug) }}" class="ms-article-item" style="display: flex; gap: 12px; text-decoration: none;">
+                                <a href="{{ url('/artikel/'.$r->slug) }}" class="ms-article-item" style="display: flex; gap: 12px; text-decoration: none; align-items: center;">
                                     <div class="ms-article-img" style="width: 80px; height: 80px; background: url('{{ asset('img/'.$r->gambar_pertama) }}') center/cover no-repeat; flex-shrink: 0;"></div>
-                                    <p class="ms-article-title" style="color: #fff; font-family: 'Source Sans 3', sans-serif; font-size: 13px; margin: 0; line-height: 1.4;">{{ $r->judul }}</p>
+                                    <p class="ms-article-title" style="color: #fff; font-family: 'Source Sans 3', sans-serif; font-size: 13px; font-weight: 700; margin: 0; line-height: 1.4;">{{ $r->judul }}</p>
                                 </a>
                                 @endforeach
                             @endif
