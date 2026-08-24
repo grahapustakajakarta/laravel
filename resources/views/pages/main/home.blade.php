@@ -896,12 +896,15 @@
         <!-- review book -->
         <section id="review">
             <div class="container">
-                <div class="review-header d-flex justify-content-between align-items-center" style="border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; padding: 16px 0; margin-bottom: 30px; margin-left: 0; margin-right: 0; flex-wrap: wrap; gap: 15px;">
+                <div class="review-header" style="display: flex !important; justify-content: space-between; align-items: center; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; padding: 16px 0; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
                     <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin: 0; padding: 0;">
                         <a href="{{ url('/page/buku') }}" style="color: #111; text-decoration: none;">The Review Book</a>
                     </h3>
-                    <div class="review-sponsors">
-                        <img src="{{ asset('img/sponsor/additional-sponsors.png') }}" alt="Sponsors" style="height: 35px; max-width: 100%; object-fit: contain;">
+                    <div class="review-sponsors" style="display: flex; align-items: center; gap: 20px;">
+                        <img src="{{ asset('img/sponsor/images (1).png') }}" alt="Plan International" style="height: 35px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/PT_Pertamina_Patra_Niaga.svg-1024x576.png') }}" alt="Pertamina" style="height: 35px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/Logo GPJ-04.png') }}" alt="GTI" style="height: 35px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/png LOGO (1).png') }}" alt="Perpustakaan Nasional" style="height: 35px; object-fit: contain;">
                     </div>
                 </div>
                 <div class="row">
