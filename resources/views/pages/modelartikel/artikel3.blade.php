@@ -537,9 +537,9 @@
                 <div class="header-right">
                     <div class="date tgl">{{ strtoupper(\Carbon\Carbon::parse($artikel->tanggal_publikasi)->format('M. d, Y')) }}</div>
                     
-                    <div class="sponsor-logos" style="display: flex; align-items: center; gap: 15px; margin: 20px 0;">
-                        <img src="{{ asset('img/sponsor/images (1).png') }}" alt="Plan International" style="height: 28px; object-fit: contain;">
-                        <img src="{{ asset('img/sponsor/PT_Pertamina_Patra_Niaga.svg-1024x576.png') }}" alt="Pertamina" style="height: 28px; object-fit: contain;">
+                    <div class="sponsor-logos" style="display: flex; align-items: center; gap: 20px; margin: 20px 0;">
+                        <img src="{{ asset('img/sponsor/images (1).png') }}" alt="Plan International" style="height: 40px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/PT_Pertamina_Patra_Niaga.svg-1024x576.png') }}" alt="Pertamina" style="height: 40px; object-fit: contain;">
                     </div>
 
                     <div class="action-buttons-container">
