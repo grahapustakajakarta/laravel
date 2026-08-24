@@ -164,8 +164,8 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="cat-slider-container">
-            <div class="col">
+        <div class="row" id="cat-slider-container" style="display: flex; flex-wrap: wrap;">
+            <div class="col-lg-8 col-md-8 col-12">
                 <div class="cat-slider-viewport" style="overflow: hidden; width: 100%;">
                     <div class="cat-slider-track" id="cat-slider-track" style="display: flex; align-items: flex-start; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); width: 100%;">
                         @php $chunks = $footer->chunk(5); @endphp
@@ -199,6 +199,16 @@
                     <button class="cat-page-btn disabled" id="cat-prev">← Sebelumnya</button>
                     <span class="cat-page-info" id="cat-info">Halaman 1 / {{ $chunks->count() ?: 1 }}</span>
                     <button class="cat-page-btn" id="cat-next">Selanjutnya →</button>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-4 col-12" style="padding-top: 20px;">
+                <div class="advertisement-block" style="text-align: left; padding-left: 15px; border-left: 1px solid #eee; height: 100%;">
+                    <p style="font-family: monospace, Courier, sans-serif; color: #888; font-size: 13px; margin-bottom: 15px; letter-spacing: 0.5px;">Advertisement</p>
+                    <a href="#" target="_blank" style="display: block; width: 100%;">
+                        <!-- Menggunakan dummy image untuk banner panjang, bisa diganti dengan gambar Guardian Weekly yang asli -->
+                        <img src="https://placehold.co/300x600/e9a334/154c52?text=Read\non" alt="Advertisement" style="width: 100%; max-width: 300px; height: auto; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    </a>
                 </div>
             </div>
         </div>
