@@ -1079,6 +1079,94 @@
                 @endif
             </div>
         </section>
+
+        <!-- EVERYONE'S READING SECTION -->
+        <style>
+            .er-card { flex: 0 0 calc(25% - 15px); max-width: calc(25% - 15px); box-sizing: border-box; }
+            @media (max-width: 992px) { .er-card { flex: 0 0 calc(33.333% - 13.33px); max-width: calc(33.333% - 13.33px); } }
+            @media (max-width: 768px) { .er-card { flex: 0 0 calc(50% - 10px); max-width: calc(50% - 10px); } }
+            @media (max-width: 480px) { .er-card { flex: 0 0 100%; max-width: 100%; } }
+            .er-card a:hover h3 { color: #b70d0f !important; }
+            .er-card a:hover img { transform: scale(1.05); }
+        </style>
+        <section id="everyone-reading-section" style="padding: 10px 0 60px 0; background: #ffffff;">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 2.5px solid #111; padding-top: 15px; margin-bottom: 30px;">
+                    <h2 style="font-family: var(--font-sans), 'Arial', sans-serif; font-size: 1.4rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin: 0; color: #111;">EVERYONE'S READING</h2>
+                    <div class="er-nav-buttons" style="display: flex; gap: 10px;">
+                        <button id="er-prev" style="width: 32px; height: 32px; border-radius: 50%; border: none; background: #f4f4f4; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #333; transition: background 0.3s;">
+                            <i class="fas fa-chevron-left" style="font-size: 11px;"></i>
+                        </button>
+                        <button id="er-next" style="width: 32px; height: 32px; border-radius: 50%; border: none; background: #f4f4f4; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #333; transition: background 0.3s;">
+                            <i class="fas fa-chevron-right" style="font-size: 11px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="er-slider-wrapper" style="overflow: hidden; position: relative; width: 100%;">
+                    <div class="er-slider-track" id="er-slider-track" style="display: flex; gap: 20px; transition: transform 0.4s ease-in-out;">
+                        @foreach ($pemikiran as $pmk)
+                        <div class="er-card">
+                            <a href="{{ url('/artikel/'.$pmk->slug) }}" style="text-decoration: none; display: block;">
+                                <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden; margin-bottom: 15px;">
+                                    <img src="{{ asset('img/'.$pmk->gambar_pertama) }}" alt="{{ $pmk->judul }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                                </div>
+                                <span style="display: block; font-family: var(--font-sans), 'Arial', sans-serif; font-size: 10px; font-weight: 700; color: #b70d0f; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">{{ $pmk->kategori->nama ?? 'PEMIKIRAN' }}</span>
+                                <h3 style="font-family: var(--font-serif), 'Georgia', serif; font-size: 1.15rem; color: #111; line-height: 1.3; margin: 0; font-weight: 600; transition: color 0.2s;">{{ $pmk->judul }}</h3>
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Script for EVERYONE'S READING Slider -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const track = document.getElementById("er-slider-track");
+                const prevBtn = document.getElementById("er-prev");
+                const nextBtn = document.getElementById("er-next");
+                let cards = track.querySelectorAll(".er-card");
+                
+                if(track && prevBtn && nextBtn && cards.length > 0) {
+                    let currentIndex = 0;
+                    
+                    function updateSlider() {
+                        const cardWidth = cards[0].offsetWidth;
+                        const gap = 20;
+                        const moveX = currentIndex * (cardWidth + gap);
+                        track.style.transform = `translateX(-${moveX}px)`;
+                    }
+
+                    nextBtn.addEventListener("click", () => {
+                        const visibleCards = window.innerWidth > 992 ? 4 : (window.innerWidth > 768 ? 3 : (window.innerWidth > 480 ? 2 : 1));
+                        const maxIndex = Math.max(0, cards.length - visibleCards);
+                        if (currentIndex < maxIndex) {
+                            currentIndex++;
+                            updateSlider();
+                        }
+                    });
+
+                    prevBtn.addEventListener("click", () => {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            updateSlider();
+                        }
+                    });
+
+                    window.addEventListener("resize", () => {
+                        const visibleCards = window.innerWidth > 992 ? 4 : (window.innerWidth > 768 ? 3 : (window.innerWidth > 480 ? 2 : 1));
+                        const maxIndex = Math.max(0, cards.length - visibleCards);
+                        if (currentIndex > maxIndex) {
+                            currentIndex = maxIndex;
+                        }
+                        updateSlider();
+                    });
+                }
+            });
+        </script>
+        
         <style>
             .ysk-wrap {
                 display: flex;

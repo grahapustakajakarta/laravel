@@ -49,6 +49,10 @@ class HomeController extends Controller
 
         $magz = Magz::orderBy('id', 'desc')->limit(2)->get();
 
+        $pemikiran = Artikel::whereHas('kategori', function($q) {
+            $q->where('nama', 'Pemikiran');
+        })->orderBy('id', 'desc')->limit(12)->get();
+
         return view('pages.main.home', compact(
             'editorsChoice', 
             'coffeeshophia', 
@@ -58,7 +62,8 @@ class HomeController extends Controller
             'bukuTerbaru', 
             'bukuLama', 
             'inspirasi',
-            'magz'
+            'magz',
+            'pemikiran'
         ));
     }
 }
