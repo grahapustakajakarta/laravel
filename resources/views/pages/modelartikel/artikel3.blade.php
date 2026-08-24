@@ -279,7 +279,7 @@
             margin-top: 20px; /* Diperkecil agar lebih mepet ke atas */
             padding: 40px 0;
             background: #fff;
-            border-top: 2px solid #000;
+            border-top: 1px solid #000;
         }
         .readmore-section .container {
             padding: 0 5%; /* Memberi jarak dari tepi layar */
@@ -295,7 +295,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-right: 2px solid #f0f0f0;
+            border-right: 1px solid #f0f0f0;
             padding-right: 20px;
         }
         .readmore-section .section-title {
@@ -667,7 +667,7 @@
 
                     {{-- GUARDIAN BANNER ONLY FOR PROSA --}}
                     @if(strtolower($artikel->kategori->nama ?? '') === 'prosa')
-                    <div class="guardian-support-banner" style="background-color: #052962; color: #fff; display: flex; justify-content: space-between; align-items: center; margin-top: 30px; padding: 15px 20px; border-radius: 2px;">
+                    <div class="guardian-support-banner" style="background-color: #052962; color: #fff; display: flex; justify-content: space-between; align-items: center; margin-top: 30px; padding: 10px 20px; border-radius: 2px;">
                         <div class="guardian-left" style="display: flex; align-items: center; gap: 20px;">
                             <div>
                                 <h4 style="font-family: var(--font-serif), 'Georgia', serif; font-size: 1.6rem; font-weight: 800; margin: 0; line-height: 1;">Support the Guardian</h4>
