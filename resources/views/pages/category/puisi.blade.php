@@ -165,7 +165,7 @@
             </div>
         </div>
         <div class="row" id="cat-slider-container" style="display: flex; flex-wrap: wrap;">
-            <div class="col-lg-8 col-md-8 col-12">
+            <div class="col col-lg-8 col-md-8 col-12">
                 <div class="cat-slider-viewport" style="overflow: hidden; width: 100%;">
                     <div class="cat-slider-track" id="cat-slider-track" style="display: flex; align-items: flex-start; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); width: 100%;">
                         @php $chunks = $footer->chunk(5); @endphp
