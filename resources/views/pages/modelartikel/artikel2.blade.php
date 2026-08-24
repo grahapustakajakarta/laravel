@@ -806,6 +806,36 @@
                     </div>
                     @endforeach
                 </div>
+
+                {{-- GUARDIAN BANNER ONLY FOR PROSA --}}
+                @if(strtolower($artikel->kategori->nama ?? '') === 'prosa')
+                <div class="guardian-support-banner" style="background-color: #052962; color: #fff; display: flex; justify-content: space-between; align-items: center; margin-top: 30px; padding: 15px 20px; border-radius: 2px;">
+                    <div class="guardian-left" style="display: flex; align-items: center; gap: 20px;">
+                        <div>
+                            <h4 style="font-family: var(--font-serif), 'Georgia', serif; font-size: 1.6rem; font-weight: 800; margin: 0; line-height: 1;">Support the Guardian</h4>
+                            <p style="font-family: var(--font-sans), 'Arial', sans-serif; font-size: 0.9rem; margin: 5px 0 0 0; color: #fff;">Fund independent journalism</p>
+                        </div>
+                        <a href="#" style="background-color: #ffe500; color: #052962; font-family: var(--font-sans), 'Arial', sans-serif; font-weight: 700; font-size: 0.9rem; padding: 8px 16px; border-radius: 20px; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                            Support us <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </div>
+                    <div class="guardian-right" style="display: flex; align-items: center; font-family: var(--font-sans), 'Arial', sans-serif; font-weight: 700; font-size: 0.9rem;">
+                        <a href="#" style="color: #fff; text-decoration: none; padding: 0 15px; border-right: 1px solid rgba(255,255,255,0.3);">Print subscriptions</a>
+                        <a href="#" style="color: #fff; text-decoration: none; padding: 0 15px; border-right: 1px solid rgba(255,255,255,0.3);">Search jobs</a>
+                        <a href="#" style="color: #fff; text-decoration: none; padding-left: 15px; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="far fa-user-circle" style="font-size: 1.1rem;"></i> Sign in
+                        </a>
+                    </div>
+                </div>
+                <style>
+                    @media (max-width: 900px) {
+                        .guardian-support-banner { flex-direction: column; align-items: flex-start !important; gap: 20px; }
+                        .guardian-left { flex-direction: column; align-items: flex-start !important; }
+                        .guardian-right { flex-wrap: wrap; gap: 10px; }
+                        .guardian-right a { padding: 0 10px 0 0 !important; border-right: none !important; }
+                    }
+                </style>
+                @endif
             </div>
         </div>
     </div>
