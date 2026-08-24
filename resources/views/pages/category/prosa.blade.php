@@ -530,45 +530,154 @@
         </div>
         @endif
 
-        {{-- ─── FOOTER STORIES LIST + SIDEBAR ─── --}}
+        {{-- ─── LEBIH BANYAK DARI PROSA ─── --}}
         @if(isset($footer) && $footer->isNotEmpty())
-        <h2 class="prosa-section-title">Semua Artikel Prosa</h2>
-        <div class="prosa-cerita-layout" id="cat-slider-container">
+        <style>
+            .lbd-container {
+                border-top: 1px solid #111;
+                padding-top: 40px;
+                display: grid;
+                grid-template-columns: 250px 1fr;
+                gap: 40px;
+                margin-bottom: 60px;
+            }
+            .lbd-left {
+                display: flex;
+                flex-direction: column;
+            }
+            .lbd-title {
+                font-family: var(--font-sans), 'Arial', sans-serif;
+                font-size: 1rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                line-height: 1.4;
+                margin-bottom: 20px;
+                color: #111;
+            }
+            .lbd-nav-buttons {
+                display: flex;
+                gap: 12px;
+            }
+            .lbd-nav-buttons button {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                border: none;
+                background: #f4f4f4;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                color: #333;
+                transition: background 0.3s;
+            }
+            .lbd-nav-buttons button:hover {
+                background: #e0e0e0;
+            }
+            .lbd-right {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
+            .lbd-slider-wrapper {
+                overflow: hidden;
+                width: 100%;
+                margin-bottom: 40px;
+            }
+            .lbd-slider-track {
+                display: flex;
+                gap: 20px;
+                transition: transform 0.4s ease-in-out;
+            }
+            .lbd-card {
+                flex: 0 0 calc(25% - 15px);
+                max-width: calc(25% - 15px);
+                box-sizing: border-box;
+            }
+            .lbd-card img {
+                width: 100%;
+                aspect-ratio: 4/3;
+                object-fit: cover;
+                border-radius: 4px;
+                margin-bottom: 12px;
+                transition: transform 0.3s;
+            }
+            .lbd-card a:hover img {
+                transform: scale(1.05);
+            }
+            .lbd-card-title {
+                font-family: var(--font-serif), 'Georgia', serif;
+                font-size: 1.05rem;
+                font-weight: 700;
+                color: #111;
+                margin-bottom: 8px;
+                line-height: 1.3;
+            }
+            .lbd-card-meta {
+                font-family: var(--font-sans), 'Arial', sans-serif;
+                font-size: 0.65rem;
+                font-weight: 700;
+                color: #b70d0f;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .lbd-ad {
+                width: 100%;
+                background: #f8f8f8;
+            }
+            .lbd-ad img {
+                width: 100%;
+                height: auto;
+            }
+            @media (max-width: 992px) {
+                .lbd-card { flex: 0 0 calc(33.333% - 13.33px); max-width: calc(33.333% - 13.33px); }
+            }
+            @media (max-width: 768px) {
+                .lbd-container { grid-template-columns: 1fr; gap: 20px; }
+                .lbd-nav-buttons { display: none; }
+                .lbd-slider-wrapper { overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; }
+                .lbd-slider-track { gap: 15px; }
+                .lbd-card { flex: 0 0 calc(60% - 15px); max-width: calc(60% - 15px); scroll-snap-align: start; }
+            }
+            @media (max-width: 480px) {
+                .lbd-card { flex: 0 0 calc(85% - 15px); max-width: calc(85% - 15px); }
+            }
+        </style>
 
-            {{-- List Artikel --}}
-            <div class="prosa-list" style="overflow: hidden; width: 100%;">
-                <div class="cat-slider-track" id="cat-slider-track" style="display: flex; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); width: 100%;">
-                    @php $chunks = $footer->chunk(5); @endphp
-                    @foreach($chunks as $chunk)
-                    <div class="cat-slide" style="flex: 0 0 100%; width: 100%;">
-                        @foreach($chunk as $story)
-                        <a href="{{ url('/artikel/'.$story->slug) }}" class="prosa-list-item">
-                            <div class="prosa-list-img">
-                                <img src="{{ asset('img/'.$story->gambar_pertama) }}" alt="{{ $story->judul }}">
-                            </div>
-                            <div class="prosa-list-body">
-                                <p class="prosa-card-label" style="color: #111;">PROSA</p>
-                                <h4 class="prosa-list-title">{{ $story->judul }}</h4>
-                                @if($story->penulis)
-                                <p class="prosa-list-meta">By {{ $story->penulis->nama }}</p>
-                                @endif
-                            </div>
-                        </a>
+        <div class="lbd-container">
+            <div class="lbd-left">
+                <h2 class="lbd-title">LEBIH BANYAK DARI<br>PROSA</h2>
+                <div class="lbd-nav-buttons">
+                    <button id="lbd-prev"><i class="fas fa-chevron-left" style="font-size: 12px;"></i></button>
+                    <button id="lbd-next"><i class="fas fa-chevron-right" style="font-size: 12px;"></i></button>
+                </div>
+            </div>
+            <div class="lbd-right">
+                <div class="lbd-slider-wrapper">
+                    <div class="lbd-slider-track" id="lbd-slider-track">
+                        @foreach($footer as $story)
+                        <div class="lbd-card">
+                            <a href="{{ url('/artikel/'.$story->slug) }}" style="text-decoration: none;">
+                                <div style="overflow: hidden; border-radius: 4px; margin-bottom: 12px;">
+                                    <img src="{{ asset('img/'.$story->gambar_pertama) }}" alt="{{ $story->judul }}">
+                                </div>
+                                <h3 class="lbd-card-title">{{ $story->judul }}</h3>
+                                <p class="lbd-card-meta">BY {{ $story->penulis->nama ?? 'GALERI BUKU JAKARTA' }}</p>
+                            </a>
+                        </div>
                         @endforeach
                     </div>
-                    @endforeach
                 </div>
 
-                {{-- JS PAGINATION --}}
-                @if($chunks->count() > 1)
-                <div class="cat-pagination" style="justify-content: flex-start; padding-top: 20px;">
-                    <button class="cat-page-btn disabled" id="cat-prev">← Sebelumnya</button>
-                    <span class="cat-page-info" id="cat-info">Halaman 1 / {{ $chunks->count() }}</span>
-                    <button class="cat-page-btn" id="cat-next">Selanjutnya →</button>
+                {{-- Advertisement inside Right Column --}}
+                <div class="lbd-ad">
+                    <!-- Menggunakan gambar dummy dengan rasio panjang, silahkan diganti gambar sponsor -->
+                    <a href="#" target="_blank">
+                        <img src="https://placehold.co/900x120/1a2c4e/ffffff?text=Support+the+Guardian" alt="Advertisement">
+                    </a>
                 </div>
-                @endif
             </div>
-
         </div>
         @endif
 
@@ -586,42 +695,56 @@
 
 @push('scripts')
 <script>
-    const sliderTrack = document.getElementById('cat-slider-track');
-    const btnPrev = document.getElementById('cat-prev');
-    const btnNext = document.getElementById('cat-next');
-    const sliderInfo = document.getElementById('cat-info');
-    
-    if (sliderTrack && btnPrev && btnNext) {
-        let currentSlide = 0;
-        const totalSlides = {{ isset($chunks) ? $chunks->count() : 1 }};
+    document.addEventListener("DOMContentLoaded", function() {
+        const track = document.getElementById("lbd-slider-track");
+        const prevBtn = document.getElementById("lbd-prev");
+        const nextBtn = document.getElementById("lbd-next");
+        
+        if(track && prevBtn && nextBtn) {
+            let cards = track.querySelectorAll(".lbd-card");
+            if (cards.length > 0) {
+                let currentIndex = 0;
+                
+                function updateSlider() {
+                    if (window.innerWidth <= 768) return;
+                    const cardWidth = cards[0].offsetWidth;
+                    const gap = 20;
+                    const moveX = currentIndex * (cardWidth + gap);
+                    track.style.transform = `translateX(-${moveX}px)`;
+                }
 
-        function updateSlider() {
-            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-            sliderInfo.textContent = `Halaman ${currentSlide + 1} / ${totalSlides}`;
-            
-            if (currentSlide === 0) btnPrev.classList.add('disabled');
-            else btnPrev.classList.remove('disabled');
-            
-            if (currentSlide === totalSlides - 1) btnNext.classList.add('disabled');
-            else btnNext.classList.remove('disabled');
-            
-            const sliderTop = document.getElementById('cat-slider-container').getBoundingClientRect().top + window.scrollY - 100;
-            window.scrollTo({ top: sliderTop, behavior: 'smooth' });
+                nextBtn.addEventListener("click", () => {
+                    if (window.innerWidth <= 768) return;
+                    const visibleCards = window.innerWidth > 992 ? 4 : 3;
+                    const maxIndex = Math.max(0, cards.length - visibleCards);
+                    if (currentIndex < maxIndex) {
+                        currentIndex++;
+                        updateSlider();
+                    }
+                });
+
+                prevBtn.addEventListener("click", () => {
+                    if (window.innerWidth <= 768) return;
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateSlider();
+                    }
+                });
+
+                window.addEventListener("resize", () => {
+                    if (window.innerWidth <= 768) {
+                        track.style.transform = 'none';
+                    } else {
+                        const visibleCards = window.innerWidth > 992 ? 4 : 3;
+                        const maxIndex = Math.max(0, cards.length - visibleCards);
+                        if (currentIndex > maxIndex) {
+                            currentIndex = maxIndex;
+                        }
+                        updateSlider();
+                    }
+                });
+            }
         }
-
-        btnNext.addEventListener('click', () => {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateSlider();
-            }
-        });
-
-        btnPrev.addEventListener('click', () => {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateSlider();
-            }
-        });
-    }
+    });
 </script>
 @endpush
