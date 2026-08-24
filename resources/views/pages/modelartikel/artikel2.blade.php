@@ -625,6 +625,14 @@
                     <p style="font-family: var(--font-sans), 'Arial', sans-serif !important; font-size: 17px !important;"><a href="{{ url('/artikel/'.$row->slug) }}">{{ htmlspecialchars($row->judul, ENT_QUOTES, 'UTF-8') }}</a></p>
                     <hr class="long-line-related">
                 @endforeach
+                
+                <div class="advertisement-block" style="margin-top: 40px; text-align: left;">
+                    <p style="font-family: monospace, Courier, sans-serif; color: #888; font-size: 13px; margin-bottom: 12px; letter-spacing: 0.5px;">Advertisement</p>
+                    <a href="#" target="_blank">
+                        <!-- Menggunakan dummy image sementara, ganti dengan banner iklan asli (misal: Minecraft Server Hosting) -->
+                        <img src="https://placehold.co/300x300/2996f8/ffffff?text=ADVERTISEMENT" alt="Advertisement" style="width: 100%; max-width: 300px; height: auto; border-radius: 4px;">
+                    </a>
+                </div>
             </div>
             <div class="content">
                 @php
