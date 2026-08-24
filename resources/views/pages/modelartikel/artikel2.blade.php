@@ -571,7 +571,16 @@
                         POETRY
                     @endif
                 </div>
-                <div class="date tgl">{{ strtoupper(\Carbon\Carbon::parse($artikel->tanggal_publikasi)->format('M. d, Y')) }}</div>
+                <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: flex-end;">
+                    <div class="header-sponsors" style="display: flex; align-items: center; gap: 15px;">
+                        <img src="{{ asset('img/sponsor/images (1).png') }}" alt="Plan International" style="height: 26px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/PT_Pertamina_Patra_Niaga.svg-1024x576.png') }}" alt="Pertamina" style="height: 26px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/Logo GPJ-04.png') }}" alt="GTI" style="height: 26px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/png LOGO (1).png') }}" alt="Perpustakaan Nasional" style="height: 26px; object-fit: contain;">
+                    </div>
+                    <div style="width: 1px; height: 20px; background-color: #ccc;" class="d-none d-md-block"></div>
+                    <div class="date tgl">{{ strtoupper(\Carbon\Carbon::parse($artikel->tanggal_publikasi)->format('M. d, Y')) }}</div>
+                </div>
             </div>
             <h1>{{ $artikel->judul }}</h1>
             <span class="title-divider"></span>
