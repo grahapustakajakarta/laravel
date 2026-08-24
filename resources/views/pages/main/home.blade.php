@@ -1083,23 +1083,30 @@
         <!-- EVERYONE'S READING SECTION -->
         <style>
             .er-container { padding: 0 40px; }
-            .er-card { flex: 0 0 calc(25% - 15px); max-width: calc(25% - 15px); box-sizing: border-box; }
+            .er-slider-wrapper { margin: 0 -20px; width: calc(100% + 40px) !important; }
+            .er-card { 
+                flex: 0 0 25%; 
+                max-width: 25%; 
+                box-sizing: border-box; 
+                padding: 0 20px;
+                border-right: 1px solid #e0e0e0;
+            }
             .er-title { font-size: 1.1rem; }
             .er-card-title { font-size: 1.05rem; }
             @media (max-width: 992px) { 
-                .er-card { flex: 0 0 calc(33.333% - 13.33px); max-width: calc(33.333% - 13.33px); } 
+                .er-card { flex: 0 0 33.333%; max-width: 33.333%; } 
             }
             @media (max-width: 768px) { 
                 .er-container { padding: 0 20px; }
-                .er-slider-wrapper { overflow-x: auto !important; scroll-snap-type: x mandatory; padding-bottom: 15px; }
+                .er-slider-wrapper { overflow-x: auto !important; scroll-snap-type: x mandatory; padding-bottom: 15px; margin: 0 -10px; width: calc(100% + 20px) !important; }
                 .er-slider-wrapper::-webkit-scrollbar { display: none; }
-                .er-slider-track { transition: none !important; transform: none !important; gap: 15px !important; }
-                .er-card { flex: 0 0 calc(60% - 15px); max-width: calc(60% - 15px); scroll-snap-align: start; } 
+                .er-slider-track { transition: none !important; transform: none !important; gap: 0 !important; }
+                .er-card { flex: 0 0 60%; max-width: 60%; scroll-snap-align: start; padding: 0 10px; } 
                 .er-nav-buttons { display: none !important; }
             }
             @media (max-width: 480px) { 
                 .er-container { padding: 0 16px; }
-                .er-card { flex: 0 0 calc(85% - 15px); max-width: calc(85% - 15px); } 
+                .er-card { flex: 0 0 85%; max-width: 85%; } 
                 .er-title { font-size: 1rem; }
             }
             .er-card a:hover h3 { color: #b70d0f !important; }
@@ -1119,8 +1126,8 @@
                     </div>
                 </div>
 
-                <div class="er-slider-wrapper" style="overflow: hidden; position: relative; width: 100%;">
-                    <div class="er-slider-track" id="er-slider-track" style="display: flex; gap: 20px; transition: transform 0.4s ease-in-out;">
+                <div class="er-slider-wrapper" style="overflow: hidden; position: relative;">
+                    <div class="er-slider-track" id="er-slider-track" style="display: flex; gap: 0; transition: transform 0.4s ease-in-out;">
                         @foreach ($pemikiran as $pmk)
                         <div class="er-card">
                             <a href="{{ url('/artikel/'.$pmk->slug) }}" style="text-decoration: none; display: block;">
@@ -1151,7 +1158,7 @@
                     function updateSlider() {
                         if (window.innerWidth <= 768) return; // Disable JS slider on mobile
                         const cardWidth = cards[0].offsetWidth;
-                        const gap = 20;
+                        const gap = 0;
                         const moveX = currentIndex * (cardWidth + gap);
                         track.style.transform = `translateX(-${moveX}px)`;
                     }
