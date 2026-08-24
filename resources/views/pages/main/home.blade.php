@@ -896,8 +896,13 @@
         <!-- review book -->
         <section id="review">
             <div class="container">
-                <div class="row">
-                    <h3 style="font-family: var(--font-sans);"><a href="{{ url('/page/buku') }}">The Review Book</a></h3>
+                <div class="review-header d-flex justify-content-between align-items-center" style="border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; padding: 16px 0; margin-bottom: 30px; margin-left: 0; margin-right: 0; flex-wrap: wrap; gap: 15px;">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin: 0; padding: 0;">
+                        <a href="{{ url('/page/buku') }}" style="color: #111; text-decoration: none;">The Review Book</a>
+                    </h3>
+                    <div class="review-sponsors">
+                        <img src="{{ asset('img/sponsor/additional-sponsors.png') }}" alt="Sponsors" style="height: 35px; max-width: 100%; object-fit: contain;">
+                    </div>
                 </div>
                 <div class="row">
                     @if($bukuTerbaru->isNotEmpty())
