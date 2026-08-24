@@ -896,15 +896,15 @@
         <!-- review book -->
         <section id="review">
             <div class="container">
-                <div class="review-header" style="display: flex !important; justify-content: space-between; align-items: center; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; padding: 16px 0; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin: 0; padding: 0;">
+                <div class="row review-header-row" style="width: 100%; display: flex !important; flex-direction: row; justify-content: space-between; align-items: center; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; padding: 15px 0; margin: 0 0 30px 0; height: auto;">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin: 0; padding: 0; line-height: 1;">
                         <a href="{{ url('/page/buku') }}" style="color: #111; text-decoration: none;">The Review Book</a>
                     </h3>
-                    <div class="review-sponsors" style="display: flex; align-items: center; gap: 20px;">
-                        <img src="{{ asset('img/sponsor/images (1).png') }}" alt="Plan International" style="height: 35px; object-fit: contain;">
-                        <img src="{{ asset('img/sponsor/PT_Pertamina_Patra_Niaga.svg-1024x576.png') }}" alt="Pertamina" style="height: 35px; object-fit: contain;">
-                        <img src="{{ asset('img/sponsor/Logo GPJ-04.png') }}" alt="GTI" style="height: 35px; object-fit: contain;">
-                        <img src="{{ asset('img/sponsor/png LOGO (1).png') }}" alt="Perpustakaan Nasional" style="height: 35px; object-fit: contain;">
+                    <div class="review-sponsors" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: flex-end;">
+                        <img src="{{ asset('img/sponsor/images (1).png') }}" alt="Plan International" style="height: 32px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/PT_Pertamina_Patra_Niaga.svg-1024x576.png') }}" alt="Pertamina" style="height: 32px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/Logo GPJ-04.png') }}" alt="GTI" style="height: 32px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/png LOGO (1).png') }}" alt="Perpustakaan Nasional" style="height: 32px; object-fit: contain;">
                     </div>
                 </div>
                 <div class="row">
