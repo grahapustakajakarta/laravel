@@ -909,7 +909,7 @@
                 </div>
                 <div class="row">
                     @if($bukuTerbaru->isNotEmpty())
-                    <div class="col-lg-6 col-md-6 review-main-grid">
+                    <div class="col-lg-5 col-md-5 review-main-grid">
                         @foreach($bukuTerbaru as $buku)
                         <div class="buku-terbaru-item" style="flex: 1; min-width: 0; display: flex; flex-direction: column; text-align: left;">
                             <a href="{{ url('/artikel/'.$buku->slug) }}" style="text-decoration: none; display:block; margin-bottom: 16px;">
@@ -925,7 +925,7 @@
                         @endforeach
                     </div>
                     
-                    <div class="col-lg-6 col-md-6 review-side-grid">
+                    <div class="col-lg-7 col-md-7 review-side-grid">
                         @foreach ($bukuLama as $row)
                         <div class="content buku-lama-item" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; width: 100%;">
                             <div class="desc" style="flex: 1; padding-right: 15px; text-align: left;">
