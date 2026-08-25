@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         $bukuTerbaru = Artikel::whereHas('kategori', function($q) {
             $q->where('nama', 'Buku');
-        })->orderBy('id', 'desc')->limit(4)->get();
+        })->orderBy('id', 'desc')->limit(3)->get();
 
         $bukuLama = collect();
         if ($bukuTerbaru->isNotEmpty()) {

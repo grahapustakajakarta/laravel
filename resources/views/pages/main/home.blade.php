@@ -909,7 +909,7 @@
                 </div>
                 <div class="row">
                     @if($bukuTerbaru->isNotEmpty())
-                    <div class="col-lg-7 col-md-7 review-main-grid">
+                    <div class="col-lg-6 col-md-6 review-main-grid">
                         @foreach($bukuTerbaru as $buku)
                         <div class="buku-terbaru-item" style="flex: 1; min-width: 0; display: flex; flex-direction: column; text-align: left;">
                             <a href="{{ url('/artikel/'.$buku->slug) }}" style="text-decoration: none; display:block; margin-bottom: 16px;">
@@ -925,17 +925,17 @@
                         @endforeach
                     </div>
                     
-                    <div class="col-lg-5 col-md-5 review-side-grid">
+                    <div class="col-lg-6 col-md-6 review-side-grid">
                         @foreach ($bukuLama as $row)
                         <div class="content buku-lama-item" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; width: 100%;">
                             <div class="desc" style="flex: 1; padding-right: 15px; text-align: left;">
                                 <a href="{{ url('/artikel/'.$row->slug) }}" style="text-decoration: none;color:#000000; display: block;">
                                     <p style="display:none; font-family: var(--font-sans); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #b70d0f; margin: 0 0 5px 0;" class="mobile-magz-tag">Review</p>
-                                    <h6 style="font-family: var(--font-serif); font-weight:bold; font-size: 0.98rem; line-height: 1.3; margin: 0;">{{ $row->judul }}</h6>
+                                    <h6 style="font-family: var(--font-serif); font-weight:bold; font-size: 1.05rem; line-height: 1.3; margin: 0;">{{ $row->judul }}</h6>
                                     <p style="font-family: var(--font-serif); color:#b70d0f; font-size: 0.56rem; font-weight: 700; text-transform: uppercase; margin: 6px 0 0 0;" >BY {{ $row->penulis->nama ?? '-' }}</p>
                                 </a>
                             </div>
-                            <img src="{{ asset('img/'.$row->gambar_pertama) }}" style="width:85px; height:105px; object-fit:contain; object-position:center; flex-shrink:0; border-radius: 2px;" alt="">
+                            <img src="{{ asset('img/'.$row->gambar_pertama) }}" style="width:105px; height:130px; object-fit:contain; object-position:center; flex-shrink:0; border-radius: 2px;" alt="">
                         </div>
                         @endforeach
                     </div>
