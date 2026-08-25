@@ -901,10 +901,7 @@
                         <a href="{{ url('/page/buku') }}" style="color: #111; text-decoration: none;">The Review Book</a>
                     </h3>
                     <div class="review-sponsors" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: flex-end;">
-                        <img src="{{ asset('img/sponsor/images (1).png') }}" alt="Plan International" style="height: 32px; object-fit: contain;">
-                        <img src="{{ asset('img/sponsor/PT_Pertamina_Patra_Niaga.svg-1024x576.png') }}" alt="Pertamina" style="height: 32px; object-fit: contain;">
-                        <img src="{{ asset('img/sponsor/Logo GPJ-04.png') }}" alt="GTI" style="height: 32px; object-fit: contain;">
-                        <img src="{{ asset('img/sponsor/png LOGO (1).png') }}" alt="Perpustakaan Nasional" style="height: 32px; object-fit: contain;">
+                        <img src="{{ asset('img/sponsor/Sarinah png.png') }}" alt="Sarinah" style="height: 32px; object-fit: contain;">
                     </div>
                 </div>
                 <div class="row">
