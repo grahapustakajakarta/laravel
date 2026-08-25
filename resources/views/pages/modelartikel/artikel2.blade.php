@@ -639,7 +639,7 @@
                     <p style="font-family: monospace, Courier, sans-serif; color: #888; font-size: 13px; margin-bottom: 12px; letter-spacing: 0.5px;">Advertisement</p>
                     <a href="#" target="_blank">
                         <!-- Menggunakan dummy image sementara, ganti dengan banner iklan asli (misal: Minecraft Server Hosting) -->
-                        <img src="https://placehold.co/300x300/2996f8/ffffff?text=ADVERTISEMENT" alt="Advertisement" style="width: 100%; max-width: 300px; height: auto; border-radius: 4px;">
+                        <img src="{{ asset('img/sponsor/sponsor1.jpeg') }}" alt="Advertisement" style="width: 100%; max-width: 300px; height: auto; border-radius: 4px;">
                     </a>
                 </div>
             </div>
