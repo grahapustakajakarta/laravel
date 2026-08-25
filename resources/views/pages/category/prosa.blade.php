@@ -466,10 +466,10 @@
         <div class="prosa-page-header">
             <h1 style="margin-bottom: 0;">Prosa</h1>
             <div class="prosa-sponsors" style="display: flex; align-items: center; gap: 20px;">
+                <img src="{{ asset('img/sponsor/Sarinah png.png') }}" alt="Sarinah" style="height: 55px; object-fit: contain;">
+                <img src="{{ asset('img/sponsor/Kompas.png') }}" alt="Kompas" style="height: 55px; object-fit: contain;">
                 <img src="{{ asset('img/sponsor/images (1).png') }}" alt="Plan International" style="height: 55px; object-fit: contain;">
-                <img src="{{ asset('img/sponsor/PT_Pertamina_Patra_Niaga.svg-1024x576.png') }}" alt="Pertamina" style="height: 55px; object-fit: contain;">
-                <img src="{{ asset('img/sponsor/Logo GPJ-04.png') }}" alt="GTI" style="height: 55px; object-fit: contain;">
-                <img src="{{ asset('img/sponsor/png LOGO (1).png') }}" alt="Perpustakaan Nasional" style="height: 55px; object-fit: contain;">
+                <img src="{{ asset('img/sponsor/Ford-Logo-1536x864.png') }}" alt="Ford" style="height: 55px; object-fit: contain;">
             </div>
         </div>
 
