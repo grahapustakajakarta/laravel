@@ -354,7 +354,7 @@
                     <div class="ms-middle">
                         {{-- Support Us Text (Yellow, no box) --}}
                         <div class="ms-middle-left">
-                            <h3 style="font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.1; margin-bottom: 15px; margin-top: 0; color: #f4e04d; letter-spacing: -0.5px;">Support<br>the Guardian</h3>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.1; margin-bottom: 15px; margin-top: 0; color: #f4e04d; letter-spacing: -0.5px;">Support<br>the GBJ</h3>
                             <p style="font-family: 'Source Sans 3', sans-serif; font-size: 15px; line-height: 1.4; margin: 0; margin-bottom: 20px; color: #fff;">Available for everyone, funded by readers</p>
                             <a href="{{ route('donate') }}" class="support-btn" style="background-color: #f4e04d; color: #111; font-family: 'Source Sans 3', sans-serif; font-size: 15px; font-weight: 700; text-decoration: none; padding: 6px 20px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; width: fit-content; gap: 6px; transition: background 0.2s;">
                                 Support us <i class="fas fa-arrow-right" style="font-size: 12px; font-weight: 700;"></i>
