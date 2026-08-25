@@ -896,7 +896,7 @@
         <!-- review book -->
         <section id="review">
             <div class="container">
-                <div class="row review-header-row" style="width: 100%; display: flex !important; flex-direction: row; justify-content: space-between; align-items: center; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; padding: 15px 0; margin: 0 0 30px 0; height: auto;">
+                <div class="row review-header-row" style="width: 100%; display: flex !important; flex-direction: row; justify-content: space-between; align-items: center; border-bottom: 1px solid #e0e0e0; padding: 15px 0; margin: 0 0 30px 0; height: auto;">
                     <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin: 0; padding: 0; line-height: 1;">
                         <a href="{{ url('/page/buku') }}" style="color: #111; text-decoration: none;">The Review Book</a>
                     </h3>
