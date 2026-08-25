@@ -380,7 +380,7 @@
         #artikel1 .adv {
             width: 28% !important; /* Lebar Most Popular */
             padding: 0 !important;
-            margin: 280px 0 0 0 !important; /* Hanya margin atas, paksa kiri-kanan 0 */
+            margin: 0 !important; /* Align with top of paragraf */
         }
         #artikel1 .adv .mostPopular {
             width: 100% !important;
