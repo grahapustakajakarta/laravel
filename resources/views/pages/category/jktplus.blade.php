@@ -567,7 +567,7 @@
             {{-- Sidebar: Magazine --}}
             <aside class="jkt-sidebar">
                 <h3 class="jkt-sidebar-title">Magazine</h3>
-                <a href="{{ route('siapakah_jakarta') }}" class="jkt-sidebar-ad">
+                <a href="{{ route('magz.index') }}" class="jkt-sidebar-ad">
                     <img src="{{ asset('img/sponsor/magazine.jpeg') }}" alt="Magazine">
                     <span class="jkt-sidebar-cta">Lihat Selengkapnya</span>
                 </a>
