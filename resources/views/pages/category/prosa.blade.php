@@ -8,7 +8,7 @@
     #prosa-page {
         width: 100%;
         height: fit-content;
-        padding: 100px 0 60px;
+        padding: 100px 0 0;
         background: #fff;
     }
 
@@ -539,7 +539,7 @@
                 display: grid;
                 grid-template-columns: 250px 1fr;
                 gap: 40px;
-                margin-bottom: 60px;
+                margin-bottom: 20px;
             }
             .lbd-left {
                 display: flex;
