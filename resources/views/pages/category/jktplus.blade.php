@@ -514,8 +514,13 @@
                 @endforeach
             </div>
 
-            {{-- Spacer: kolom kosong agar grid rata --}}
-            <div></div>
+            {{-- Advertisement Column (Sidebar) --}}
+            <div class="jkt-advertisement" style="padding-left: 20px; border-left: 1px solid #eee;">
+                <p style="font-family: monospace, Courier, sans-serif; color: #888; font-size: 13px; margin-bottom: 15px; letter-spacing: 0.5px;">Advertisement</p>
+                <a href="#" target="_blank" style="display: block; width: 100%;">
+                    <img src="{{ asset('img/sponsor/sponsor2.jpeg') }}" alt="Advertisement" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                </a>
+            </div>
 
         </div>
         @endif
@@ -559,11 +564,11 @@
                 @endif
             </div>
 
-            {{-- Sidebar: Submission --}}
+            {{-- Sidebar: Magazine --}}
             <aside class="jkt-sidebar">
-                <h3 class="jkt-sidebar-title">Submission</h3>
+                <h3 class="jkt-sidebar-title">Magazine</h3>
                 <a href="{{ route('siapakah_jakarta') }}" class="jkt-sidebar-ad">
-                    <img src="{{ asset('pustaka/siapakajkt.jpeg') }}" alt="Siapakah Jakarta">
+                    <img src="{{ asset('img/sponsor/magazine.jpeg') }}" alt="Magazine">
                     <span class="jkt-sidebar-cta">Lihat Selengkapnya</span>
                 </a>
             </aside>
