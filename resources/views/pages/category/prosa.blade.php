@@ -670,13 +670,7 @@
                     </div>
                 </div>
 
-                {{-- Advertisement inside Right Column --}}
-                <div class="lbd-ad">
-                    <!-- Menggunakan gambar dummy dengan rasio panjang, silahkan diganti gambar sponsor -->
-                    <a href="#" target="_blank">
-                        <img src="https://placehold.co/900x120/1a2c4e/ffffff?text=Support+the+Guardian" alt="Advertisement">
-                    </a>
-                </div>
+
             </div>
         </div>
         @endif
