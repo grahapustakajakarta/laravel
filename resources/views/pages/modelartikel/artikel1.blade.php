@@ -702,6 +702,100 @@
                     </a>
                 @endforeach
             </div>
+
+            {{-- Sidebar: Magazine --}}
+            <style>
+                .jkt-sidebar {
+                    margin-top: 40px; /* Jarak agar tidak nempel dengan most popular */
+                }
+                .jkt-sidebar-title {
+                    font-family: var(--font-sans);
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    color: #111;
+                    border-bottom: 1px solid #c4c3c3ff;
+                    padding-bottom: 10px;
+                    margin-bottom: 20px;
+                }
+                .jkt-sidebar-ad {
+                    display: block;
+                    text-decoration: none;
+                    overflow: hidden;
+                    position: relative;
+                    background: #fff;
+                    width: 100%;
+                    border-left: 5px solid transparent;
+                    transition: border-color 0.4s ease;
+                }
+                .jkt-sidebar-ad:hover {
+                    border-left-color: #e03a3c;
+                }
+                .jkt-sidebar-ad::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 55%;
+                    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+                    opacity: 0;
+                    transform: translateY(8px);
+                    transition: opacity 0.4s ease, transform 0.4s ease;
+                    pointer-events: none;
+                }
+                .jkt-sidebar-ad:hover::after {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                .jkt-sidebar-cta {
+                    position: absolute;
+                    bottom: 24px;
+                    left: 18px;
+                    color: #fff;
+                    font-family: var(--font-sans);
+                    font-size: 0.95rem;
+                    font-weight: 800;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+                    gap: 10px;
+                    z-index: 2;
+                    opacity: 0;
+                    transform: translateY(8px);
+                    transition: opacity 0.4s ease, transform 0.4s ease;
+                }
+                .jkt-sidebar-cta::after {
+                    content: '→';
+                    display: inline-block;
+                    transition: transform 0.3s ease;
+                }
+                .jkt-sidebar-ad:hover .jkt-sidebar-cta {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                .jkt-sidebar-ad:hover .jkt-sidebar-cta::after {
+                    transform: translateX(4px);
+                }
+                .jkt-sidebar-ad img {
+                    width: 100%;
+                    height: 450px;
+                    object-fit: cover;
+                    display: block;
+                    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                }
+                .jkt-sidebar-ad:hover img {
+                    transform: scale(1.05);
+                }
+            </style>
+            <aside class="jkt-sidebar">
+                <h3 class="jkt-sidebar-title">Magazine</h3>
+                <a href="{{ route('siapakah_jakarta') }}" class="jkt-sidebar-ad">
+                    <img src="{{ asset('img/sponsor/magazine.jpeg') }}" alt="Magazine">
+                    <span class="jkt-sidebar-cta">Lihat Selengkapnya</span>
+                </a>
+            </aside>
         </div>
     </div>
 </section>
