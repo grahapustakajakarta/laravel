@@ -523,7 +523,7 @@
             <div class="prosa-advertisement" style="padding-left: 20px; border-left: 1px solid #eee;">
                 <p style="font-family: monospace, Courier, sans-serif; color: #888; font-size: 13px; margin-bottom: 15px; letter-spacing: 0.5px;">Advertisement</p>
                 <a href="#" target="_blank" style="display: block; width: 100%;">
-                    <img src="https://placehold.co/300x500/8d9da7/ffffff?text=Advertisement" alt="Advertisement" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <img src="{{ asset('img/sponsor/sponsor2.jpeg') }}" alt="Advertisement" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
                 </a>
             </div>
 
