@@ -106,7 +106,11 @@
 
                     </div>
                     <div class="iklan">
-                        <img src="{{ asset('img/a1.jpg') }}" alt="">
+                        @if(isset($rubrikNama) && $rubrikNama == 'Writing Tips')
+                            <img src="{{ asset('img/sponsor/sponsor3.jpeg') }}" alt="Sponsor" style="width: 100%; max-width: 600px; aspect-ratio: 600 / 1200; object-fit: cover;">
+                        @else
+                            <img src="{{ asset('img/a1.jpg') }}" alt="">
+                        @endif
                     </div>
                 </div>
             </div>
