@@ -674,7 +674,7 @@
                         grid-template-columns: repeat(2, 1fr);
                         gap: 12px;
                     }
-                    .buku-terbaru-item:nth-child(n+3) {
+                    .buku-terbaru-item:nth-child(n+5) {
                         display: none !important;
                     }
                     /* Buku judul & penulis di review section */
@@ -906,7 +906,7 @@
                 </div>
                 <div class="row">
                     @if($bukuTerbaru->isNotEmpty())
-                    <div class="col-lg-4 col-md-4 review-main-grid">
+                    <div class="col-lg-8 col-md-8 review-main-grid">
                         @foreach($bukuTerbaru as $buku)
                         <div class="buku-terbaru-item" style="flex: 1; min-width: 0; display: flex; flex-direction: column; text-align: left;">
                             <a href="{{ url('/artikel/'.$buku->slug) }}" style="text-decoration: none; display:block; margin-bottom: 16px;">
@@ -922,7 +922,7 @@
                         @endforeach
                     </div>
                     
-                    <div class="col-lg-8 col-md-8 review-side-grid">
+                    <div class="col-lg-4 col-md-4 review-side-grid">
                         @foreach ($bukuLama as $row)
                         <div class="content buku-lama-item" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; width: 100%;">
                             <div class="desc" style="flex: 1; padding-right: 15px; text-align: left;">
@@ -932,7 +932,7 @@
                                     <p style="font-family: var(--font-sans); font-size: 11.5px; font-weight: 700; color: #b70d0f; margin: 6px 0 0 0; text-transform: uppercase;">By {{ $row->penulis->nama ?? '-' }}</p>
                                 </a>
                             </div>
-                            <img src="{{ asset('img/'.$row->gambar_pertama) }}" style="width:55px; height:70px; object-fit:contain; object-position:top center; flex-shrink:0;" alt="">
+                            <img src="{{ asset('img/'.$row->gambar_pertama) }}" style="width:65px; height:85px; object-fit:contain; object-position:top center; flex-shrink:0;" alt="">
                         </div>
                         @endforeach
                     </div>
