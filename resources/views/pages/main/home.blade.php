@@ -7,6 +7,7 @@
                     @foreach ($editorsChoice as $r)
                         <div class="item" style="background-image: url('{{ asset('img/'.$r->gambar_pertama) }}');">
                             <div class="content">
+                                <span style="display: inline-block; background: #b70d0f; color: #fff; font-family: var(--font-sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 14px; margin-bottom: 12px;">{{ $r->kategori->nama ?? 'Editor Choice' }}</span>
                                 <a style="font-family: var(--font-serif);" class="name" href="{{ url('/artikel/'.$r->slug) }}">{{ $r->judul }}</a>
                             </div>
                         </div>
@@ -594,6 +595,11 @@
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
+                }
+                #head .content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                 }
 
                 /* Scope ke #content .bj-hero: gambar portrait artikel utama */
