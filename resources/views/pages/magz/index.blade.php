@@ -104,7 +104,8 @@
     .pub-cover img {
         width: 140px;
         height: 185px;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center top;
         display: block;
     }
     .pub-cover-placeholder {
