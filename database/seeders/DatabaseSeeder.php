@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'Writing Tips',
             'Inspirasi',
             'Jakarta+',
-            'Editor Choice',
+            'Editor\'s Choice',
             'The Brief'
         ];
 

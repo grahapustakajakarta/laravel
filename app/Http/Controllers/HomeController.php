@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         $editorsChoice = Artikel::whereHas('kategori', function($q) {
-            $q->where('nama', 'Editor Choice');
+            $q->where('nama', 'Editor\'s Choice');
         })->orderBy('id', 'desc')->limit(10)->get();
 
         $coffeeshophia = Artikel::whereHas('kategori', function($q) {
