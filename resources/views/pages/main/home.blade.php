@@ -601,7 +601,7 @@
                     flex-direction: column !important;
                     align-items: center !important;     /* Center horizontally */
                     justify-content: center !important; /* Center vertically */
-                    padding-top: 15% !important;        /* Push slightly towards bottom */
+                    padding-top: 28% !important;        /* Push slightly towards bottom */
                 }
 
                 /* Scope ke #content .bj-hero: gambar portrait artikel utama */
