@@ -910,7 +910,7 @@
                         @foreach($bukuTerbaru as $buku)
                         <div class="buku-terbaru-item" style="flex: 1; min-width: 0; display: flex; flex-direction: column; text-align: left;">
                             <a href="{{ url('/artikel/'.$buku->slug) }}" style="text-decoration: none; display:block; margin-bottom: 16px;">
-                                <img src="{{ asset('img/'.$buku->gambar_pertama) }}" style="width:100%; max-height:220px; object-fit:contain; object-position:center; box-shadow: 0 4px 10px rgba(0,0,0,0.08); display:block;" alt="">
+                                <img src="{{ asset('img/'.$buku->gambar_pertama) }}" style="width:100%; height:220px; object-fit:contain; object-position:center; box-shadow: 0 4px 10px rgba(0,0,0,0.08); display:block; background:#f5f4f0;" alt="">
                             </a>
                             <div class="desc">
                                 <a href="{{ url('/artikel/'.$buku->slug) }}" style="text-decoration: none;color:#000000; display:block;">
@@ -932,7 +932,7 @@
                                     <p style="font-family: var(--font-sans); font-size: 11.5px; font-weight: 700; color: #b70d0f; margin: 6px 0 0 0; text-transform: uppercase;">By {{ $row->penulis->nama ?? '-' }}</p>
                                 </a>
                             </div>
-                            <img src="{{ asset('img/'.$row->gambar_pertama) }}" style="width:70px; height:auto; object-fit:contain; object-position:top center; flex-shrink:0;" alt="">
+                            <img src="{{ asset('img/'.$row->gambar_pertama) }}" style="width:55px; height:70px; object-fit:contain; object-position:top center; flex-shrink:0;" alt="">
                         </div>
                         @endforeach
                     </div>
