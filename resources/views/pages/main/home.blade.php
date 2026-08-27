@@ -597,9 +597,11 @@
                     background-repeat: no-repeat;
                 }
                 #head .content {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: center !important;     /* Center horizontally */
+                    justify-content: center !important; /* Center vertically */
+                    padding-top: 15% !important;        /* Push slightly towards bottom */
                 }
 
                 /* Scope ke #content .bj-hero: gambar portrait artikel utama */
