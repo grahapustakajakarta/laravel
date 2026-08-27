@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::table('kategoris')
+        DB::table('kategori')
             ->where('nama', 'Editor Choice')
             ->update([
                 'nama' => 'Editor\'s Choice',
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::table('kategoris')
+        DB::table('kategori')
             ->where('nama', 'Editor\'s Choice')
             ->update([
                 'nama' => 'Editor Choice',
