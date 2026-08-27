@@ -909,8 +909,10 @@
                     <div class="col-lg-8 col-md-8 review-main-grid">
                         @foreach($bukuTerbaru as $buku)
                         <div class="buku-terbaru-item" style="flex: 1; min-width: 0; display: flex; flex-direction: column; text-align: left;">
-                            <a href="{{ url('/artikel/'.$buku->slug) }}" style="text-decoration: none; display:block; margin-bottom: 16px;">
-                                <img src="{{ asset('img/'.$buku->gambar_pertama) }}" style="width:100%; height:260px; object-fit:contain; object-position:center; box-shadow: 0 4px 10px rgba(0,0,0,0.08); display:block; background:#f5f4f0; padding: 16px 12px;" alt="">
+                            <a href="{{ url('/artikel/'.$buku->slug) }}" style="text-decoration: none; display:block; margin-bottom: 12px;">
+                                <div style="background:#f5f4f0; padding: 16px 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); width:100%; box-sizing:border-box;">
+                                    <img src="{{ asset('img/'.$buku->gambar_pertama) }}" style="width:100%; height:200px; object-fit:contain; object-position:center; display:block;" alt="">
+                                </div>
                             </a>
                             <div class="desc">
                                 <a href="{{ url('/artikel/'.$buku->slug) }}" style="text-decoration: none;color:#000000; display:block;">
