@@ -599,9 +599,13 @@
                 #head .content {
                     display: flex !important;
                     flex-direction: column !important;
-                    align-items: center !important;     /* Center horizontally */
-                    justify-content: center !important; /* Center vertically */
-                    padding-top: 28% !important;        /* Push slightly towards bottom */
+                    align-items: center !important;
+                    justify-content: flex-end !important; /* Start from bottom */
+                    padding-bottom: 80px !important;      /* Adjust distance from bottom */
+                    box-sizing: border-box !important;
+                }
+                #head .content .name {
+                    margin-bottom: 0 !important;          /* Remove original bottom margin */
                 }
 
                 /* Scope ke #content .bj-hero: gambar portrait artikel utama */
