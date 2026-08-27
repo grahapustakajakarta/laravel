@@ -647,7 +647,7 @@
                 /* Responsive class untuk grid Review Book */
                 .review-main-grid {
                     display: flex; 
-                    gap: 6px; 
+                    gap: 14px; 
                     border-right: 1px solid #d8d3cc; 
                     padding-right: 16px;
                 }
@@ -910,7 +910,7 @@
                         @foreach($bukuTerbaru as $buku)
                         <div class="buku-terbaru-item" style="flex: 1; min-width: 0; display: flex; flex-direction: column; text-align: left;">
                             <a href="{{ url('/artikel/'.$buku->slug) }}" style="text-decoration: none; display:block; margin-bottom: 12px;">
-                                <div style="background:#f5f4f0; padding: 16px 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); width:100%; box-sizing:border-box;">
+                                <div style="background:#f5f4f0; padding: 16px 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); width:90%; margin: 0 auto; box-sizing:border-box;">
                                     <img src="{{ asset('img/'.$buku->gambar_pertama) }}" style="width:100%; height:200px; object-fit:contain; object-position:center; display:block;" alt="">
                                 </div>
                             </a>
