@@ -21,9 +21,9 @@
 
     /* ✨✨✨ PAGE HEADER ✨✨✨ */
     .prosa-page-header {
-        border-top: 3px solid #111;
+        border-top: 1px solid #111;
         padding-top: 18px;
-        border-bottom: 3px solid #111;
+        border-bottom: 1px solid #111;
         padding-bottom: 18px;
         margin-bottom: 48px;
         display: flex;
