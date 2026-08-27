@@ -928,8 +928,8 @@
                             <div class="desc" style="flex: 1; padding-right: 15px; text-align: left;">
                                 <a href="{{ url('/artikel/'.$row->slug) }}" style="text-decoration: none;color:#000000; display: block;">
                                     <p style="display:none; font-family: var(--font-sans); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #b70d0f; margin: 0 0 5px 0;" class="mobile-magz-tag">Review</p>
-                                    <h6 style="font-family: var(--font-serif); font-weight:bold; font-size: 1.05rem; line-height: 1.3; margin: 0;">{{ $row->judul }}</h6>
-                                    <p style="font-family: var(--font-serif); color:#b70d0f; font-size: 0.56rem; font-weight: 700; text-transform: uppercase; margin: 6px 0 0 0;" >BY {{ $row->penulis->nama ?? '-' }}</p>
+                                    <h6 style="font-family: var(--font-serif); font-weight:bold; font-size: 0.85rem; line-height: 1.3; margin: 0;">{{ $row->judul }}</h6>
+                                    <p style="font-family: var(--font-sans); font-size: 11.5px; font-weight: 700; color: #1a1a1a; margin: 6px 0 0 0; text-transform: uppercase;">By {{ $row->penulis->nama ?? '-' }}</p>
                                 </a>
                             </div>
                             <img src="{{ asset('img/'.$row->gambar_pertama) }}" style="width:105px; height:130px; object-fit:contain; object-position:center; flex-shrink:0; border-radius: 2px;" alt="">
