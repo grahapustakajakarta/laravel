@@ -647,12 +647,12 @@
                 /* Responsive class untuk grid Review Book */
                 .review-main-grid {
                     display: flex; 
-                    gap: 12px; 
+                    gap: 6px; 
                     border-right: 1px solid #d8d3cc; 
-                    padding-right: 24px;
+                    padding-right: 16px;
                 }
                 .review-side-grid {
-                    padding-left: 24px;
+                    padding-left: 16px;
                 }
                 @media (max-width: 768px) {
                     .review-main-grid {
@@ -924,8 +924,8 @@
                     
                     <div class="col-lg-4 col-md-4 review-side-grid">
                         @foreach ($bukuLama as $row)
-                        <div class="content buku-lama-item" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; width: 100%;">
-                            <div class="desc" style="flex: 1; padding-right: 15px; text-align: left;">
+                        <div class="content buku-lama-item" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; width: 100%;">
+                            <div class="desc" style="flex: 1; padding-right: 8px; text-align: left;">
                                 <a href="{{ url('/artikel/'.$row->slug) }}" style="text-decoration: none;color:#000000; display: block;">
                                     <p style="display:none; font-family: var(--font-sans); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #b70d0f; margin: 0 0 5px 0;" class="mobile-magz-tag">Review</p>
                                     <h6 style="font-family: var(--font-serif); font-weight:bold; font-size: 0.8rem; line-height: 1.3; margin: 0; max-width: 90%;">{{ $row->judul }}</h6>
