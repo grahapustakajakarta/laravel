@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $editorsChoice = Artikel::whereHas('kategori', function($q) {
             $q->where('nama', 'Editor Choice');
-        })->orderBy('id', 'desc')->limit(3)->get();
+        })->orderBy('id', 'desc')->limit(10)->get();
 
         $coffeeshophia = Artikel::whereHas('kategori', function($q) {
             $q->where('nama', 'Coffeeshophia');
